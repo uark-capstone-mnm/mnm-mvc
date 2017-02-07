@@ -5,6 +5,8 @@
  */
 package views;
 
+import controller.Controller;
+import controller.mlRegion;
 import java.awt.FileDialog;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
@@ -28,12 +30,13 @@ import tools.ImageMap;
  * @author thy
  */
 public class View extends javax.swing.JFrame {
-
+    Controller cont = new Controller();
     /**
      * Creates new form view
      */
     public View() {
         initComponents();
+        
     }
 
     /**
@@ -427,12 +430,14 @@ public class View extends javax.swing.JFrame {
         // TODO add your handling code here:
         stop.setEnabled(true);
         start.setEnabled(false);
+        cont.startRecording();
     }//GEN-LAST:event_startActionPerformed
 
     private void stopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stopActionPerformed
         // TODO add your handling code here:
         stop.setEnabled(false);
         start.setEnabled(true);
+        cont.stopRecording();
     }//GEN-LAST:event_stopActionPerformed
 
     private void fileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileActionPerformed

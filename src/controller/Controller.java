@@ -6,7 +6,7 @@
 package controller;
 
 import java.io.IOException;
-import models.Model;
+import models.PatientFile;
 import views.View;
 
 /**
@@ -14,24 +14,24 @@ import views.View;
  * @author thy
  */
 public class Controller {
+    PatientFile model = new PatientFile();
+
     public void startApplication() {
         View view = new View();
         view.setVisible(true);
     }
-    
-    public String getMessage() {
-        try {
-            Model model = new Model();
-            return model.getData();
-        } catch (IOException ex) {
-            return "Error";
+
+    public boolean startRecording() {
+        try{
+            return model.createPatientFile();
+        } catch (Exception er) {
+            return false;
         }
     }
-    
-    public boolean writeMessage(String message){
+
+    public boolean stopRecording() {
         try{
-            Model model = new Model();
-            return model.writeData(message);
+            return model.closePatientFile();
         } catch (Exception er) {
             return false;
         }
