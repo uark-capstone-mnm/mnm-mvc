@@ -85,7 +85,7 @@ public class PatientFile {
             writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileName), "utf-8"));
             writer.write("Patient: " + lName.getText() + "," + fName.getText());
             writer.newLine();
-            writer.write("SSN: " + ssn.getText());
+            writer.write("SSN: " + "***-**-" + ssn.getText().substring(7));
             writer.newLine();
             writer.write("Start Recording: " + fileTime);
             writer.newLine();
