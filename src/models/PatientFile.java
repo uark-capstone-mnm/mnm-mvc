@@ -49,23 +49,18 @@ public class PatientFile {
         
         int result = JOptionPane.showConfirmDialog(null, inputs, "Information", JOptionPane.PLAIN_MESSAGE);
         if (result == JOptionPane.OK_OPTION) {
-            System.out.println("You entered " +
-                    fName.getText() + ", " +
-                    lName.getText() + ", " +
-                    ssn.getText());
             if(validateNameInput(fName.getText()) && validateNameInput(lName.getText()) && validateSSNInput(ssn.getText()))
             {
-                JOptionPane.showMessageDialog(null, "Valid inputs");
                 return createFile();
             }
             else {
                 JOptionPane.showMessageDialog(null,"Invalid Information","Information",JOptionPane.ERROR_MESSAGE);
+                return false;
             }
         } else {
             System.out.println("User canceled / closed the dialog, result = " + result);
             return false;
         }
-        return true;
     }
     
     public boolean createFile() {

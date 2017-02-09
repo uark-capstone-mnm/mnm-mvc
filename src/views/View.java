@@ -428,16 +428,18 @@ public class View extends javax.swing.JFrame {
 
     private void startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startActionPerformed
         // TODO add your handling code here:
-        stop.setEnabled(true);
-        start.setEnabled(false);
-        cont.startRecording();
+        if(cont.startRecording()) {
+            stop.setEnabled(true);
+            start.setEnabled(false);
+        }
     }//GEN-LAST:event_startActionPerformed
 
     private void stopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stopActionPerformed
         // TODO add your handling code here:
-        stop.setEnabled(false);
-        start.setEnabled(true);
-        cont.stopRecording();
+        if(cont.stopRecording()) {
+            stop.setEnabled(false);
+            start.setEnabled(true);
+        }
     }//GEN-LAST:event_stopActionPerformed
 
     private void fileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileActionPerformed
