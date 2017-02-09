@@ -10,27 +10,34 @@ package models;
  * @author thy
  */
 import java.io.*;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JComponent;
+import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.text.MaskFormatter;
 
-/**
- *
- * @author AfzaalAhmad
- */
 public class PatientFile {
     private String fileName;
+    private int iSSN;
     BufferedWriter writer;
-
-    public boolean createPatientFile() {
+    JTextField fName, lName;
+    JFormattedTextField ssn;
+            
+    public boolean createPatientFile() throws ParseException {
         
-        JTextField fName = new JTextField();
-        JTextField lName = new JTextField();
-        JTextField ssn = new JTextField();
+        fName = new JTextField();
+        lName = new JTextField();
+        
+        MaskFormatter mfSSN = new MaskFormatter("###-##-####");
+        mfSSN.setPlaceholderCharacter('_');
+        mfSSN.setValidCharacters("0123456789");
+        ssn = new JFormattedTextField(mfSSN);
+        
+        
         final JComponent[] inputs = new JComponent[] {
                 new JLabel("First"),
                 fName,
@@ -39,15 +46,29 @@ public class PatientFile {
                 new JLabel("SSN"),
                 ssn
         };
+        
         int result = JOptionPane.showConfirmDialog(null, inputs, "Information", JOptionPane.PLAIN_MESSAGE);
         if (result == JOptionPane.OK_OPTION) {
             System.out.println("You entered " +
                     fName.getText() + ", " +
                     lName.getText() + ", " +
                     ssn.getText());
+            if(validateNameInput(fName.getText()) && validateNameInput(lName.getText()) && validateSSNInput(ssn.getText()))
+            {
+                JOptionPane.showMessageDialog(null, "Valid inputs");
+                return createFile();
+            }
+            else {
+                JOptionPane.showMessageDialog(null,"Invalid Information","Information",JOptionPane.ERROR_MESSAGE);
+            }
         } else {
             System.out.println("User canceled / closed the dialog, result = " + result);
+            return false;
         }
+        return true;
+    }
+    
+    public boolean createFile() {
         String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
         String fileTime = new SimpleDateFormat("MMM dd yyyy 'at' HH:mm:ss").format(new Date());
         // Create directory if doesn't exist
@@ -81,7 +102,7 @@ public class PatientFile {
         }
         return true;
     }
-
+   
     public boolean closePatientFile() {
         String fileTime = new SimpleDateFormat("MMM dd yyyy 'at' HH:mm:ss").format(new Date());
         try{
@@ -98,4 +119,25 @@ public class PatientFile {
         }
     }
 
+    public int transformSSN(String sSSN) {
+        String temp = sSSN.replaceAll("-", "");
+        return Integer.parseInt(temp);
+    }
+
+    private boolean validateNameInput(String text) {
+        if (text.isEmpty())
+            return false;
+        for(char c : text.toCharArray())
+            if(!Character.isLetter(c) && c != '-' && c != ' ')
+                return false;
+        return true;
+    }
+
+    private boolean validateSSNInput(String text) {
+        if (text.isEmpty())
+            return false;
+        if(text.length() < 9)
+            return false;
+        return true;
+    }
 }
