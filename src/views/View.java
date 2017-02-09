@@ -6,21 +6,16 @@
 package views;
 
 import controller.Controller;
-import controller.mlRegion;
-import java.awt.FileDialog;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileFilter;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
-import org.apache.commons.io.IOCase;
-import org.apache.commons.io.filefilter.PrefixFileFilter;
+import javax.swing.JOptionPane;
 import tools.Global;
 import tools.ImageMap;
 
@@ -79,6 +74,11 @@ public class View extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Multimodal Neural Monitoring");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.BOTTOM);
 
@@ -102,50 +102,7 @@ public class View extends javax.swing.JFrame {
         rightMain.setLayout(new java.awt.GridBagLayout());
         rightMain.setBorder(BorderFactory.createTitledBorder(""));
 
-        try {
-            ArrayList<BufferedImage> abiRegions = new ArrayList<BufferedImage>();
-            ArrayList<ImageIcon> aiRegions = new ArrayList<ImageIcon>();
-            ArrayList<JLabel> ajlRegions = new ArrayList<JLabel>();
-            GridBagConstraints bgbc = new GridBagConstraints();
-            int brainy = 0;
-            File[] greenImgs = new File("./src/images/").listFiles((FileFilter) new PrefixFileFilter("green", IOCase.INSENSITIVE));
-            for(File file : greenImgs) {
-                abiRegions.add(ImageIO.read(file));
-            }
-            for (BufferedImage region : abiRegions) {
-                aiRegions.add(new ImageIcon(region));
-            }
-            for(ImageIcon region: aiRegions) {
-                ajlRegions.add(new JLabel(region));
-            }
-            for(int i = 0; i < ajlRegions.size(); i++) {
-                ajlRegions.get(i).addMouseListener(new mlRegion(jTabbedPane1, i));
-                bgbc = new GridBagConstraints();
-                bgbc.insets = new Insets(0, 0, 0, 0);
-                if( i == 0 )
-                {
-                    bgbc.anchor = GridBagConstraints.LINE_START;
-
-                }
-                else if (i % 2 == 1) {
-                    bgbc.gridx = 1;
-                    bgbc.gridy = brainy;
-                    bgbc.fill = GridBagConstraints.HORIZONTAL;
-                    bgbc.weightx = 1.0;
-                }
-                else if (i % 2 == 0) {
-                    bgbc.gridx = 0;
-                    bgbc.gridy = ++brainy;
-                    bgbc.anchor = GridBagConstraints.LINE_START;
-
-                }
-                rightMain.add(ajlRegions.get(i), bgbc);
-            }
-
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        cont.implementRegionImages(rightMain, jTabbedPane1);
 
         tabBrain.add(rightMain);
 
@@ -159,7 +116,7 @@ public class View extends javax.swing.JFrame {
         leftEEG.setLayout(leftEEGLayout);
         leftEEGLayout.setHorizontalGroup(
             leftEEGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 454, Short.MAX_VALUE)
+            .addGap(0, 529, Short.MAX_VALUE)
         );
         leftEEGLayout.setVerticalGroup(
             leftEEGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -295,14 +252,14 @@ public class View extends javax.swing.JFrame {
         jTabbedPane1.addTab("Region 8", tabRegion8);
 
         file.setText("File");
-        file.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fileActionPerformed(evt);
-            }
-        });
 
         open.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
         open.setText("Open");
+        open.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                openActionPerformed(evt);
+            }
+        });
         file.add(open);
 
         save.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
@@ -397,10 +354,18 @@ public class View extends javax.swing.JFrame {
 
     private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
         // TODO add your handling code here:
+        JFileChooser fcSave = new JFileChooser();
+        int rVal = fcSave.showSaveDialog(this);
+        if (rVal == JFileChooser.APPROVE_OPTION) {
+            // Save the file to directory
+        }
     }//GEN-LAST:event_saveActionPerformed
 
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
         // TODO add your handling code here:
+        if(stop.isEnabled())
+            cont.stopRecording();
+        System.exit(0);
     }//GEN-LAST:event_exitActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
@@ -442,11 +407,22 @@ public class View extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_stopActionPerformed
 
-    private void fileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileActionPerformed
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
-        FileDialog fd = new FileDialog(this, "Open", FileDialog.SAVE);
-        
-    }//GEN-LAST:event_fileActionPerformed
+        if(stop.isEnabled()) {
+            JOptionPane.showMessageDialog(null, "Closing open patient file...");
+            cont.stopRecording();
+        }
+    }//GEN-LAST:event_formWindowClosing
+
+    private void openActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openActionPerformed
+        // TODO add your handling code here:
+        JFileChooser fcOpen = new JFileChooser();
+        int rVal = fcOpen.showOpenDialog(this);
+        if(rVal == JFileChooser.APPROVE_OPTION) {
+            // Open file with the name
+        }
+    }//GEN-LAST:event_openActionPerformed
 
     /**
      * @param args the command line arguments

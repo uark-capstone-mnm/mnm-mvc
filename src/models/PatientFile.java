@@ -54,7 +54,7 @@ public class PatientFile {
                 return createFile();
             }
             else {
-                JOptionPane.showMessageDialog(null,"Invalid Information","Information",JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Invalid inouts","Information",JOptionPane.ERROR_MESSAGE);
                 return false;
             }
         } else {
