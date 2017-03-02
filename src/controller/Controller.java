@@ -57,7 +57,7 @@ public class Controller {
             ArrayList<JLabel> ajlRegions = new ArrayList<JLabel>();
             GridBagConstraints bgbc = new GridBagConstraints();
             int brainy = 0;
-            File[] greenImgs = new File("./src/images/").listFiles((FileFilter) new PrefixFileFilter("green", IOCase.INSENSITIVE));
+            File[] greenImgs = new File("./images/").listFiles((FileFilter) new PrefixFileFilter("green", IOCase.INSENSITIVE));
             for(File file : greenImgs) {
                 abiRegions.add(ImageIO.read(file));
             }

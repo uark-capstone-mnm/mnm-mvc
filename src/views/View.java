@@ -16,7 +16,13 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import org.knowm.xchart.QuickChart;
+import org.knowm.xchart.XChartPanel;
+import org.knowm.xchart.XYChart;
+import org.knowm.xchart.XYChartBuilder;
 import tools.Global;
+import tools.Graph;
 import tools.ImageMap;
 
 
@@ -147,16 +153,16 @@ public class View extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("EEG", tabEEG);
 
-        javax.swing.GroupLayout tabRegion1Layout = new javax.swing.GroupLayout(tabRegion1);
-        tabRegion1.setLayout(tabRegion1Layout);
-        tabRegion1Layout.setHorizontalGroup(
-            tabRegion1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 607, Short.MAX_VALUE)
-        );
-        tabRegion1Layout.setVerticalGroup(
-            tabRegion1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 450, Short.MAX_VALUE)
-        );
+        tabRegion1.setLayout(new java.awt.GridLayout(4, 2));
+
+        tabRegion1.add(Graph.getRandomStaticGraph());
+        tabRegion1.add(Graph.getRandomStaticGraph());
+        tabRegion1.add(Graph.getRandomStaticGraph());
+        tabRegion1.add(Graph.getRandomStaticGraph());
+        tabRegion1.add(Graph.getRandomStaticGraph());
+        tabRegion1.add(Graph.getRandomStaticGraph());
+        tabRegion1.add(Graph.getRandomStaticGraph());
+        tabRegion1.add(Graph.getRandomStaticGraph());
 
         jTabbedPane1.addTab("Region 1", tabRegion1);
 
@@ -168,7 +174,7 @@ public class View extends javax.swing.JFrame {
         );
         tabRegion2Layout.setVerticalGroup(
             tabRegion2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 450, Short.MAX_VALUE)
+            .addGap(0, 460, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Region 2", tabRegion2);
@@ -181,7 +187,7 @@ public class View extends javax.swing.JFrame {
         );
         tabRegion3Layout.setVerticalGroup(
             tabRegion3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 450, Short.MAX_VALUE)
+            .addGap(0, 460, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Region 3", tabRegion3);
@@ -194,7 +200,7 @@ public class View extends javax.swing.JFrame {
         );
         tabRegion4Layout.setVerticalGroup(
             tabRegion4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 450, Short.MAX_VALUE)
+            .addGap(0, 460, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Region 4", tabRegion4);
@@ -207,7 +213,7 @@ public class View extends javax.swing.JFrame {
         );
         tabRegion5Layout.setVerticalGroup(
             tabRegion5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 450, Short.MAX_VALUE)
+            .addGap(0, 460, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Region 5", tabRegion5);
@@ -220,7 +226,7 @@ public class View extends javax.swing.JFrame {
         );
         tabRegion6Layout.setVerticalGroup(
             tabRegion6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 450, Short.MAX_VALUE)
+            .addGap(0, 460, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Region 6", tabRegion6);
@@ -233,7 +239,7 @@ public class View extends javax.swing.JFrame {
         );
         tabRegion7Layout.setVerticalGroup(
             tabRegion7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 450, Short.MAX_VALUE)
+            .addGap(0, 460, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Region 7", tabRegion7);
@@ -246,7 +252,7 @@ public class View extends javax.swing.JFrame {
         );
         tabRegion8Layout.setVerticalGroup(
             tabRegion8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 450, Short.MAX_VALUE)
+            .addGap(0, 460, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Region 8", tabRegion8);
