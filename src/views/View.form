@@ -8,9 +8,6 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="File"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fileActionPerformed"/>
-          </Events>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="open">
               <Properties>
@@ -19,6 +16,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Open"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="openActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="save">
               <Properties>
@@ -122,6 +122,9 @@
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowClosing" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowClosing"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -185,7 +188,7 @@
             </Container>
             <Container class="javax.swing.JPanel" name="rightMain">
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_LayoutCodePost" type="java.lang.String" value="try {&#xa;    ArrayList&lt;BufferedImage&gt; abiRegions = new ArrayList&lt;BufferedImage&gt;();&#xa;    ArrayList&lt;ImageIcon&gt; aiRegions = new ArrayList&lt;ImageIcon&gt;();&#xa;    ArrayList&lt;JLabel&gt; ajlRegions = new ArrayList&lt;JLabel&gt;();&#xa;    GridBagConstraints bgbc = new GridBagConstraints();&#xa;    int brainy = 0;&#xa;    File[] greenImgs = new File(&quot;./src/images/&quot;).listFiles((FileFilter) new PrefixFileFilter(&quot;green&quot;, IOCase.INSENSITIVE));&#xa;    for(File file : greenImgs) {&#xa;        abiRegions.add(ImageIO.read(file));&#xa;    }&#xa;    for (BufferedImage region : abiRegions) {&#xa;        aiRegions.add(new ImageIcon(region));&#xa;    }&#xa;    for(ImageIcon region: aiRegions) {&#xa;        ajlRegions.add(new JLabel(region));&#xa;    }&#xa;    for(int i = 0; i &lt; ajlRegions.size(); i++) {&#xa;        ajlRegions.get(i).addMouseListener(new mlRegion(jTabbedPane1, i));&#xa;        bgbc = new GridBagConstraints();&#xa;        bgbc.insets = new Insets(0, 0, 0, 0);&#xa;        if( i == 0 )&#xa;        {&#xa;            bgbc.anchor = GridBagConstraints.LINE_START;&#xa;&#xa;        }&#xa;        else if (i % 2 == 1) {&#xa;            bgbc.gridx = 1;&#xa;            bgbc.gridy = brainy;&#xa;            bgbc.fill = GridBagConstraints.HORIZONTAL;&#xa;            bgbc.weightx = 1.0;&#xa;        }&#xa;        else if (i % 2 == 0) {&#xa;            bgbc.gridx = 0;&#xa;            bgbc.gridy = ++brainy;&#xa;            bgbc.anchor = GridBagConstraints.LINE_START;&#xa;&#xa;        }&#xa;        rightMain.add(ajlRegions.get(i), bgbc);&#xa;    }&#xa;} catch (IOException e) {&#xa;    // TODO Auto-generated catch block&#xa;    e.printStackTrace();&#xa;}"/>
+                <AuxValue name="JavaCodeGenerator_LayoutCodePost" type="java.lang.String" value="cont.implementRegionImages(rightMain, jTabbedPane1);"/>
                 <AuxValue name="JavaCodeGenerator_LayoutCodePre" type="java.lang.String" value="rightMain.setBorder(BorderFactory.createTitledBorder(&quot;&quot;));"/>
               </AuxValues>
 
@@ -202,12 +205,17 @@
             </Constraint>
           </Constraints>
 
-          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout"/>
+          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
           <SubComponents>
             <Container class="javax.swing.JPanel" name="leftEEG">
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="leftEEG.setBorder(BorderFactory.createTitledBorder(&quot;&quot;));"/>
               </AuxValues>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
+                  <GridBagConstraints gridX="-1" gridY="-1" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
+                </Constraint>
+              </Constraints>
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -227,12 +235,23 @@
                 <AuxValue name="JavaCodeGenerator_LayoutCodePost" type="java.lang.String" value="try {&#xa;    BufferedImage eeg = ImageIO.read(new File(&quot;src/images/updated_eeg_map.png&quot;));&#xa;&#xa;    ArrayList&lt;BufferedImage&gt; abiRegions = new ArrayList&lt;BufferedImage&gt;();&#xa;    ArrayList&lt;ImageIcon&gt; aiRegions = new ArrayList&lt;ImageIcon&gt;();&#xa;    ArrayList&lt;JLabel&gt; ajlRegions = new ArrayList&lt;JLabel&gt;();&#xa;    ImageMap imageSlice = new ImageMap(eeg, abiRegions, aiRegions, ajlRegions);&#xa;    for(int i = 0; i &lt; ajlRegions.size(); i++) {&#xa;        rightEEG.add(ajlRegions.get(i));&#xa;    }&#xa;} catch (IOException e) {&#xa;    // TODO Auto-generated catch block&#xa;    e.printStackTrace();&#xa;}"/>
                 <AuxValue name="JavaCodeGenerator_LayoutCodePre" type="java.lang.String" value="rightEEG.setBorder(BorderFactory.createTitledBorder(&quot;&quot;));"/>
               </AuxValues>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
+                  <GridBagConstraints gridX="-1" gridY="-1" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
+                </Constraint>
+              </Constraints>
 
-              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
+              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+                <Property name="columns" type="int" value="2"/>
+                <Property name="rows" type="int" value="4"/>
+              </Layout>
             </Container>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="tabRegion1">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_LayoutCodePost" type="java.lang.String" value="GraphModel model = new DefaultGraphModel();&#xa;tabRegion1.add(new SeriesChartPane(model));&#xa;tabRegion1.add(new SeriesChartPane(model));&#xa;tabRegion1.add(new SeriesChartPane(model));&#xa;tabRegion1.add(new SeriesChartPane(model));&#xa;tabRegion1.add(new SeriesChartPane(model));&#xa;tabRegion1.add(new SeriesChartPane(model));&#xa;tabRegion1.add(new SeriesChartPane(model));&#xa;tabRegion1.add(new SeriesChartPane(model));"/>
+          </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Region 1">
@@ -241,17 +260,9 @@
             </Constraint>
           </Constraints>
 
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="607" max="32767" attributes="0"/>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="450" max="32767" attributes="0"/>
-              </Group>
-            </DimensionLayout>
+          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+            <Property name="columns" type="int" value="2"/>
+            <Property name="rows" type="int" value="4"/>
           </Layout>
         </Container>
         <Container class="javax.swing.JPanel" name="tabRegion2">
@@ -271,7 +282,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="450" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="460" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -293,7 +304,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="450" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="460" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -315,7 +326,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="450" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="460" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -337,7 +348,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="450" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="460" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -359,7 +370,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="450" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="460" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -381,7 +392,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="450" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="460" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -403,7 +414,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="450" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="460" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>

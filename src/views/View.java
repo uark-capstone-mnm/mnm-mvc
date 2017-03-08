@@ -16,13 +16,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import org.knowm.xchart.QuickChart;
-import org.knowm.xchart.XChartPanel;
-import org.knowm.xchart.XYChart;
-import org.knowm.xchart.XYChartBuilder;
+import models.DefaultGraphModel;
 import tools.Global;
-import tools.Graph;
+import interfaces.GraphModel;
+import models.SeriesChartPane;
 import tools.ImageMap;
 
 
@@ -155,14 +152,15 @@ public class View extends javax.swing.JFrame {
 
         tabRegion1.setLayout(new java.awt.GridLayout(4, 2));
 
-        tabRegion1.add(Graph.getRandomStaticGraph());
-        tabRegion1.add(Graph.getRandomStaticGraph());
-        tabRegion1.add(Graph.getRandomStaticGraph());
-        tabRegion1.add(Graph.getRandomStaticGraph());
-        tabRegion1.add(Graph.getRandomStaticGraph());
-        tabRegion1.add(Graph.getRandomStaticGraph());
-        tabRegion1.add(Graph.getRandomStaticGraph());
-        tabRegion1.add(Graph.getRandomStaticGraph());
+        GraphModel model = new DefaultGraphModel();
+        tabRegion1.add(new SeriesChartPane(model));
+        tabRegion1.add(new SeriesChartPane(model));
+        tabRegion1.add(new SeriesChartPane(model));
+        tabRegion1.add(new SeriesChartPane(model));
+        tabRegion1.add(new SeriesChartPane(model));
+        tabRegion1.add(new SeriesChartPane(model));
+        tabRegion1.add(new SeriesChartPane(model));
+        tabRegion1.add(new SeriesChartPane(model));
 
         jTabbedPane1.addTab("Region 1", tabRegion1);
 
