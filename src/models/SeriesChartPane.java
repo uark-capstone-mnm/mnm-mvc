@@ -8,6 +8,7 @@ package models;
 import interfaces.GraphModel;
 import interfaces.GraphMonitor;
 import java.awt.BorderLayout;
+import java.io.FileNotFoundException;
 import java.util.List;
 import javax.swing.JPanel;
 import org.knowm.xchart.XYChart;
@@ -24,12 +25,12 @@ public class SeriesChartPane extends JPanel implements GraphMonitor {
     private GraphModel model;
     private XYChart chart;
 
-    public SeriesChartPane(GraphModel model) {
+    public SeriesChartPane(GraphModel model) throws FileNotFoundException {
         this.model = model;
         chart = initChart();
 
         List<Double>[] sineData = model.getData();
-        chart.addSeries("sine", sineData[0], sineData[1]);
+        chart.addSeries("eeg", sineData[0], sineData[1]);
         setLayout(new BorderLayout());
 
         XChartPanel chartPane = new XChartPanel(chart);
@@ -46,15 +47,16 @@ public class SeriesChartPane extends JPanel implements GraphMonitor {
 
     @Override
     public void updateData(List<Double>[] data) {
-        chart.updateXYSeries("sine", data[0], data[1], null);
+        chart.updateXYSeries("eeg", data[0], data[1], null);
         repaint();
     }
 
     private XYChart initChart() {
-        XYChart chart = new XYChartBuilder().width(300).height(200).theme(Styler.ChartTheme.GGPlot2).build();
+        XYChart chart = new XYChartBuilder().width(300).height(200).build();
         chart.getStyler().setChartPadding(0);
         chart.getStyler().setLegendVisible(false);
         chart.getStyler().setAxisTitlesVisible(false);
+        chart.getStyler().setMarkerSize(0);
         return chart;
     }
 

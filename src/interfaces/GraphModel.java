@@ -5,6 +5,7 @@
  */
 package interfaces;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +14,7 @@ import java.util.List;
  * @author thy
  */
 public interface GraphModel {
-    public List<Double>[] getData();
-    public List<Double>[] getData(ArrayList<Double> data);
+    public List<Double>[] getData() throws FileNotFoundException;
+    public List<Double>[] getData(ArrayList<Double> time, ArrayList<Double> data) throws FileNotFoundException;
+    public void cleanData(List<Double>[] data);
 }

@@ -16,9 +16,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import models.DefaultGraphModel;
+import models.NIRS.NIRSGraphModelA;
 import tools.Global;
 import interfaces.GraphModel;
+import java.io.FileNotFoundException;
 import models.SeriesChartPane;
 import tools.ImageMap;
 
@@ -152,15 +153,13 @@ public class View extends javax.swing.JFrame {
 
         tabRegion1.setLayout(new java.awt.GridLayout(4, 2));
 
-        GraphModel model = new DefaultGraphModel();
-        tabRegion1.add(new SeriesChartPane(model));
-        tabRegion1.add(new SeriesChartPane(model));
-        tabRegion1.add(new SeriesChartPane(model));
-        tabRegion1.add(new SeriesChartPane(model));
-        tabRegion1.add(new SeriesChartPane(model));
-        tabRegion1.add(new SeriesChartPane(model));
-        tabRegion1.add(new SeriesChartPane(model));
-        tabRegion1.add(new SeriesChartPane(model));
+        try {
+            GraphModel model = new NIRSGraphModelA();
+            tabRegion1.add(new SeriesChartPane(model));
+        }
+        catch (FileNotFoundException e) {
+            System.out.println("oh no");
+        }
 
         jTabbedPane1.addTab("Region 1", tabRegion1);
 

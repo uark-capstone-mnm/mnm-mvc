@@ -17,7 +17,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
-import models.PatientFile;
+import models.PatientFile.PatientFile;
 import org.apache.commons.io.IOCase;
 import org.apache.commons.io.filefilter.PrefixFileFilter;
 import views.View;
@@ -95,4 +95,5 @@ public class Controller {
             System.out.println("Cannot load image...");
         }
     }
+    
 }
