@@ -6,6 +6,8 @@
 package views;
 
 import controller.Controller;
+
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -116,7 +118,9 @@ public class View extends javax.swing.JFrame {
 
         rightMain.setLayout(new java.awt.GridBagLayout());
         rightMain.setBorder(BorderFactory.createTitledBorder(""));
-
+        rightMain.setBackground(Color.white);
+        setResizable(false);
+        
         cont.implementRegionImages(rightMain, jTabbedPane1);
 
         tabBrain.add(rightMain);
