@@ -32,7 +32,7 @@ public class View extends javax.swing.JFrame {
      */
     public View() {
         initComponents();
-        
+        cont.startRecording();
     }
 
     /**

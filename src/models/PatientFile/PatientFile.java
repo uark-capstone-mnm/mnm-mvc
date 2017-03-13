@@ -14,6 +14,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JComponent;
+import javax.swing.JFileChooser;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -26,7 +27,7 @@ public class PatientFile {
     BufferedWriter writer;
     JTextField fName, lName;
     JFormattedTextField ssn;
-            
+    
     public boolean createPatientFile() throws ParseException {
         
         fName = new JTextField();
@@ -37,6 +38,9 @@ public class PatientFile {
         mfSSN.setValidCharacters("0123456789");
         ssn = new JFormattedTextField(mfSSN);
         
+        final Object[] options = {"Create",
+                            "Open",
+                            "Cancel"};
         
         final JComponent[] inputs = new JComponent[] {
                 new JLabel("First"),
@@ -46,21 +50,38 @@ public class PatientFile {
                 new JLabel("SSN"),
                 ssn
         };
-        
-        int result = JOptionPane.showConfirmDialog(null, inputs, "Information", JOptionPane.PLAIN_MESSAGE);
-        if (result == JOptionPane.OK_OPTION) {
+    
+        int result = JOptionPane.showOptionDialog(null,
+                        inputs,
+                        "Patient File",
+                        JOptionPane.YES_NO_CANCEL_OPTION,
+                        JOptionPane.QUESTION_MESSAGE,
+                        null,
+                        options,
+                        options[1]);
+        if (result == JOptionPane.YES_OPTION) {
             if(validateNameInput(fName.getText()) && validateNameInput(lName.getText()) && validateSSNInput(ssn.getText()))
             {
                 return createFile();
             }
             else {
-                JOptionPane.showMessageDialog(null,"Invalid inouts","Information",JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Invalid inputs","Information",JOptionPane.ERROR_MESSAGE);
                 return false;
             }
-        } else {
+        } else if (result == JOptionPane.NO_OPTION)  {
+            JFileChooser fcOpen = new JFileChooser();
+            int rVal = fcOpen.showOpenDialog(null);
+            if(rVal == JFileChooser.APPROVE_OPTION) {
+                // Open file with the name
+            }
+        }
+        else {
             System.out.println("User canceled / closed the dialog, result = " + result);
+            System.exit(0);
             return false;
         }
+        
+        return true;
     }
     
     public boolean createFile() {
