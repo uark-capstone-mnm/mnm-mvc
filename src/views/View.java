@@ -9,6 +9,7 @@ import controller.Controller;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -19,6 +20,7 @@ import tools.Global;
 import interfaces.GraphModel;
 import java.io.FileNotFoundException;
 import models.SeriesChartPane;
+import models.BrainOverlay;
 
 
 /**
@@ -76,6 +78,7 @@ public class View extends javax.swing.JFrame {
         save = new javax.swing.JMenuItem();
         exit = new javax.swing.JMenuItem();
         edit = new javax.swing.JMenu();
+        NIRSTester = new javax.swing.JMenuItem();
         navi = new javax.swing.JMenu();
         back = new javax.swing.JMenuItem();
         forward = new javax.swing.JMenuItem();
@@ -420,6 +423,19 @@ public class View extends javax.swing.JFrame {
         jMenuBar1.add(file);
 
         edit.setText("Edit");
+        edit.add(NIRSTester);
+        
+        NIRSTester.setText("Test NIRS Region");
+        NIRSTester.addActionListener(new java.awt.event.ActionListener() {
+        	public void actionPerformed(java.awt.event.ActionEvent evt) {
+        		try {
+					cont.changeBrainRegion();
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}
+        	}
+        });
+        
         jMenuBar1.add(edit);
 
         navi.setText("Navigate");
@@ -603,6 +619,7 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JMenu actions;
     private javax.swing.JMenuItem back;
     private javax.swing.JMenu edit;
+    private javax.swing.JMenuItem NIRSTester;
     private javax.swing.JMenuItem exit;
     private javax.swing.JMenu file;
     private javax.swing.JMenuItem forward;

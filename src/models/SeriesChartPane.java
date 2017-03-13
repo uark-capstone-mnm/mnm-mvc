@@ -52,7 +52,7 @@ public class SeriesChartPane extends JPanel implements GraphMonitor {
     }
 
     private XYChart initChart() {
-        XYChart chart = new XYChartBuilder().width(450).height(200).build();
+        XYChart chart = new XYChartBuilder().width(300).height(200).build();
         chart.getStyler().setChartPadding(0);
         chart.getStyler().setLegendVisible(false);
         chart.getStyler().setAxisTitlesVisible(false);
