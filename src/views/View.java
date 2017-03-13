@@ -9,19 +9,16 @@ import controller.Controller;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import models.NIRS.NIRSGraphModelA;
 import tools.Global;
 import interfaces.GraphModel;
 import java.io.FileNotFoundException;
 import models.SeriesChartPane;
-import tools.ImageMap;
 
 
 /**
@@ -55,6 +52,17 @@ public class View extends javax.swing.JFrame {
         leftEEG = new javax.swing.JPanel();
         rightEEG = new javax.swing.JPanel();
         tabRegion1 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
         tabRegion2 = new javax.swing.JPanel();
         tabRegion3 = new javax.swing.JPanel();
         tabRegion4 = new javax.swing.JPanel();
@@ -112,67 +120,194 @@ public class View extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Main", tabBrain);
 
-        tabEEG.setLayout(new java.awt.GridBagLayout());
+        tabEEG.setLayout(new javax.swing.BoxLayout(tabEEG, javax.swing.BoxLayout.LINE_AXIS));
 
         leftEEG.setBorder(BorderFactory.createTitledBorder(""));
+        leftEEG.setLayout(new java.awt.GridLayout(0, 1));
+        try {
+            GraphModel model = new models.NIRS.NIRSGraphModelA();
+            leftEEG.add(new SeriesChartPane(model));
+            leftEEG.add(new SeriesChartPane(model));
+            leftEEG.add(new SeriesChartPane(model));
+            leftEEG.add(new SeriesChartPane(model));
+        }
+        catch (FileNotFoundException e) {
+            System.out.println("oh no");
+        }
+        tabEEG.add(leftEEG);
 
-        javax.swing.GroupLayout leftEEGLayout = new javax.swing.GroupLayout(leftEEG);
-        leftEEG.setLayout(leftEEGLayout);
-        leftEEGLayout.setHorizontalGroup(
-            leftEEGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 529, Short.MAX_VALUE)
-        );
-        leftEEGLayout.setVerticalGroup(
-            leftEEGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 460, Short.MAX_VALUE)
-        );
-
-        tabEEG.add(leftEEG, new java.awt.GridBagConstraints());
-
-        rightEEG.setLayout(new java.awt.GridLayout(4, 2));
         rightEEG.setBorder(BorderFactory.createTitledBorder(""));
+
+        //try {
+            //    BufferedImage eeg = ImageIO.read(new File("src/images/updated_eeg_map.png"));
+            //
+            //    ArrayList<BufferedImage> abiRegions = new ArrayList<BufferedImage>();
+            //    ArrayList<ImageIcon> aiRegions = new ArrayList<ImageIcon>();
+            //    ArrayList<JLabel> ajlRegions = new ArrayList<JLabel>();
+            //    ImageMap imageSlice = new ImageMap(eeg, abiRegions, aiRegions, ajlRegions);
+            //    for(int i = 0; i < ajlRegions.size(); i++) {
+                //        rightEEG.add(ajlRegions.get(i));
+                //    }
+
+            //} catch (IOException e) {
+            //    // TODO Auto-generated catch block
+            //    e.printStackTrace();
+            //}
 
         try {
             BufferedImage eeg = ImageIO.read(new File("src/images/updated_eeg_map.png"));
-
-            ArrayList<BufferedImage> abiRegions = new ArrayList<BufferedImage>();
-            ArrayList<ImageIcon> aiRegions = new ArrayList<ImageIcon>();
-            ArrayList<JLabel> ajlRegions = new ArrayList<JLabel>();
-            ImageMap imageSlice = new ImageMap(eeg, abiRegions, aiRegions, ajlRegions);
-            for(int i = 0; i < ajlRegions.size(); i++) {
-                rightEEG.add(ajlRegions.get(i));
-            }
+            JLabel picLabel = new JLabel(new ImageIcon(eeg));
+            rightEEG.add(picLabel);
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
-        tabEEG.add(rightEEG, new java.awt.GridBagConstraints());
+        tabEEG.add(rightEEG);
 
         jTabbedPane1.addTab("EEG", tabEEG);
 
-        tabRegion1.setLayout(new java.awt.GridLayout(4, 2));
+        tabRegion1.setLayout(new java.awt.GridLayout(2, 2));
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setText("Status:");
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 128, 0));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Good");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE))
+        );
+
+        tabRegion1.add(jPanel1);
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel3.setText("Oxygenation");
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("78%");
+
+        jPanel5.setLayout(new java.awt.GridLayout());
 
         try {
-            GraphModel model = new NIRSGraphModelA();
-            tabRegion1.add(new SeriesChartPane(model));
+            GraphModel model = new models.NIRS.NIRSGraphModelA();
+            jPanel5.add(new SeriesChartPane(model));
         }
         catch (FileNotFoundException e) {
             System.out.println("oh no");
         }
 
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jLabel3)
+                .addGap(0, 167, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        try {
+            GraphModel model = new models.NIRS.NIRSGraphModelA();
+            jPanel2.add(new SeriesChartPane(model));
+        }
+        catch (FileNotFoundException e) {
+            System.out.println("oh no");
+        }
+
+        tabRegion1.add(jPanel2);
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Blood Flow");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+        );
+
+        tabRegion1.add(jPanel3);
+
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("Temperature");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+        );
+
+        tabRegion1.add(jPanel4);
+
+        //try {
+            //    GraphModel model = new models.NIRSGraphModel();
+            //    tabRegion1.add(new SeriesChartPane(model));
+            //}
+        //catch (FileNotFoundException e) {
+            //    System.out.println("oh no");
+            //}
+
         jTabbedPane1.addTab("Region 1", tabRegion1);
 
-        javax.swing.GroupLayout tabRegion2Layout = new javax.swing.GroupLayout(tabRegion2);
-        tabRegion2.setLayout(tabRegion2Layout);
-        tabRegion2Layout.setHorizontalGroup(
-            tabRegion2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 607, Short.MAX_VALUE)
-        );
-        tabRegion2Layout.setVerticalGroup(
-            tabRegion2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 460, Short.MAX_VALUE)
-        );
+        tabRegion2.setLayout(new java.awt.GridLayout(4, 2));
+
+        //try {
+            //    GraphModel model = new models.NIRS.NIRSGraphModelA();
+            //    tabRegion2.add(new SeriesChartPane(model));
+            //}
+        //catch (FileNotFoundException e) {
+            //    System.out.println("oh no");
+            //}
 
         jTabbedPane1.addTab("Region 2", tabRegion2);
 
@@ -472,7 +607,18 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JMenu file;
     private javax.swing.JMenuItem forward;
     private javax.swing.JMenuItem home;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JPanel leftEEG;
     private javax.swing.JPanel leftMain;
