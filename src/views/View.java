@@ -8,6 +8,8 @@ package views;
 import controller.Controller;
 
 import java.awt.Color;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -129,6 +131,7 @@ public class View extends javax.swing.JFrame {
 
         tabEEG.setLayout(new javax.swing.BoxLayout(tabEEG, javax.swing.BoxLayout.LINE_AXIS));
 
+
         leftEEG.setBorder(BorderFactory.createTitledBorder(""));
         leftEEG.setLayout(new java.awt.GridLayout(0, 1));
         try {
@@ -144,6 +147,10 @@ public class View extends javax.swing.JFrame {
         tabEEG.add(leftEEG);
 
         rightEEG.setBorder(BorderFactory.createTitledBorder(""));
+        rightEEG.setBackground(Color.WHITE);
+        rightEEG.setLayout(new GridBagLayout());
+        //GridBagConstraints GBC = new GridBagConstraints();
+        
 
         //try {
             //    BufferedImage eeg = ImageIO.read(new File("src/images/updated_eeg_map.png"));
@@ -164,7 +171,9 @@ public class View extends javax.swing.JFrame {
         try {
             BufferedImage eeg = ImageIO.read(new File("src/images/updated_eeg_map.png"));
             JLabel picLabel = new JLabel(new ImageIcon(eeg));
+            //picLabel.setVerticalAlignment(1);
             rightEEG.add(picLabel);
+            
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
