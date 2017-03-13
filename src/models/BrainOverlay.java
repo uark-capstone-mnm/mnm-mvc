@@ -32,7 +32,7 @@ public class BrainOverlay {
 			}
 			return brainImages.get(region);
 		}
-		if (color == 2){
+                else if (color == 2){
 			File[] redImgs = new File("src/images/").listFiles((FileFilter) new PrefixFileFilter("red", IOCase.INSENSITIVE));
 			for(File file : redImgs) {
 				try{

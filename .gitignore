@@ -1,2 +1,5 @@
 build/*
 *.xlsx
+dist/README.TXT
+src/patients/*
+/target/
