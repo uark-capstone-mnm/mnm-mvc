@@ -3,3 +3,4 @@ build/*
 dist/README.TXT
 src/patients/*
 /target/
+nbproject/private/private.properties
