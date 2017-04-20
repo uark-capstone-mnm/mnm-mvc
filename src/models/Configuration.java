@@ -6,6 +6,7 @@ import java.util.prefs.Preferences;
 
 import org.ini4j.*;
 
+
 public class Configuration {
 	Ini configFile;
 	Preferences prefs;
@@ -24,16 +25,20 @@ public class Configuration {
 		}
 	}
 	
-	public double getOxygenThreshold() {
-		return prefs.node("options").getDouble("oxygenthreshold", 0.00);
+	public double getYellowThreshold() {
+		return prefs.node("options").getDouble("yellowthreshold", 0.00);
+	}
+        
+        public double getRedThreshold() {
+		return prefs.node("options").getDouble("redthreshold", 0.00);
 	}
 	
-	public boolean getDPF() {
-		return prefs.node("options").getBoolean("dpf", false);
+	public double getDPF() {
+		return prefs.node("options").getDouble("dpf", 0.00);
 	}
 	
-	public int getEpsilon() {
-		return prefs.node("options").getInt("epsilon", 0);
+	public double getEpsilon() {
+		return prefs.node("options").getDouble("epsilon", 0);
 	}
 	
 	public String getValues() {
