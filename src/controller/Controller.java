@@ -46,7 +46,8 @@ public class Controller {
     public void startApplication() {
         View view = new View();
         Configuration customProps = new Configuration("config.ini");
-        System.out.println(customProps.getOxygenThreshold());
+        System.out.println("Yellow Threshold: " + customProps.getYellowThreshold());
+        System.out.println("Red Threshold: " + customProps.getRedThreshold());
         view.setVisible(true);
     }
 
