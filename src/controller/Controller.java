@@ -48,8 +48,8 @@ public class Controller {
     public void startApplication() {
         View view = new View();
         Configuration customProps = new Configuration("config.ini");
-        System.out.println("Yellow Threshold: " + customProps.getYellowThreshold());
-        System.out.println("Red Threshold: " + customProps.getRedThreshold());
+        System.out.println("Yellow Threshold: " + customProps.getThreshold(0));
+        System.out.println("Red Threshold: " + customProps.getThreshold(1));
         view.setVisible(true);
     }
 

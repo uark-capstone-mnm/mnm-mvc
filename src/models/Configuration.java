@@ -25,20 +25,40 @@ public class Configuration {
 		}
 	}
 	
-	public double getYellowThreshold() {
-		return prefs.node("options").getDouble("yellowthreshold", 0.00);
+	public double getThreshold(int color) {
+            // yellow == 0
+            if(color == 0) {
+                return prefs.node("options").getDouble("yellowthreshold", 0.00);
+            }
+            // red == 1
+            else if(color == 1) {
+                return prefs.node("options").getDouble("redthreshold", 0.00);
+            }
+            return 0.00;
 	}
-        
-        public double getRedThreshold() {
-		return prefs.node("options").getDouble("redthreshold", 0.00);
+        	
+	public double getDPF(int wavelength) {
+            // 760 == 0
+            if(wavelength == 0) {
+                return prefs.node("options").getDouble("dpf_wavelength1", 0.00);
+            }
+            // 840 == 1
+            else if(wavelength == 1) {
+                return prefs.node("options").getDouble("dpf_wavelength2", 0.00);
+            }
+            return 0.00;
 	}
 	
-	public double getDPF() {
-		return prefs.node("options").getDouble("dpf", 0.00);
-	}
-	
-	public double getEpsilon() {
-		return prefs.node("options").getDouble("epsilon", 0);
+	public double getEpsilon(int wavelength) {
+            // 760 == 0
+            if(wavelength == 0) {
+                return prefs.node("options").getDouble("epsilon_wavelength1", 0);
+            }
+            // 840 == 1
+            else if(wavelength == 1) {
+                return prefs.node("options").getDouble("epsilon_wavelength2", 0);
+            }
+            return 0.00;
 	}
 	
 	public String getValues() {
