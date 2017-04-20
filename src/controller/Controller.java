@@ -24,7 +24,7 @@ import javax.swing.JTabbedPane;
 import javax.swing.text.MaskFormatter; // Remove with NIRS tester
 
 import models.BrainOverlay;
-import models.Configuration;
+//import models.Configuration;
 import models.PatientFile.PatientFile;
 import org.apache.commons.io.IOCase;
 import org.apache.commons.io.filefilter.PrefixFileFilter;
