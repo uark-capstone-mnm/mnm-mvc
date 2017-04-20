@@ -24,11 +24,13 @@ import javax.swing.JTabbedPane;
 import javax.swing.text.MaskFormatter; // Remove with NIRS tester
 
 import models.BrainOverlay;
-//import models.Configuration;
+import models.Configuration;
 import models.PatientFile.PatientFile;
 import org.apache.commons.io.IOCase;
 import org.apache.commons.io.filefilter.PrefixFileFilter;
 import views.View;
+import tools.SoundCritical;
+import tools.SoundWarning;
 
 /**
  *
@@ -94,6 +96,41 @@ public class Controller {
     	// Does the actual work of replacing the image
     	BufferedImage brainImage = bOverlay.setImage(region, color);
     	ajlRegions.get(region).setIcon(new ImageIcon(brainImage));
+    	if (color == 1){
+    		try {
+    			new SoundWarning().start();
+    		} catch (Exception e){
+    			System.out.println(e);
+    		}
+    	}
+    	else if (color == 2){
+    		try {
+    			new SoundCritical().start();
+    		} catch (Exception e){
+    			System.out.println(e);
+    		}
+    	}
+    }
+    
+    // Color - 1 = Yellow, 2 = Red, Else = Green
+    // Region - Starts counting from 0
+    public void changeBrainRegion(int color, int region) throws ParseException{
+    	BufferedImage brainImage = bOverlay.setImage(region, color);
+    	ajlRegions.get(region).setIcon(new ImageIcon(brainImage));
+    	if (color == 1){
+    		try {
+    			new SoundWarning().start();
+    		} catch (Exception e){
+    			System.out.println(e);
+    		}
+    	}
+    	else if (color == 2){
+    		try {
+    			new SoundCritical().start();
+    		} catch (Exception e){
+    			System.out.println(e);
+    		}
+    	}
     }
 
     public void implementRegionImages(JPanel parent, JTabbedPane tabbed) {

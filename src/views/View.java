@@ -104,7 +104,7 @@ public class View extends javax.swing.JFrame {
         leftMain.setLayout(leftMainLayout);
         leftMainLayout.setHorizontalGroup(
             leftMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 567, Short.MAX_VALUE)
+            .addGap(0, 560, Short.MAX_VALUE)
         );
         leftMainLayout.setVerticalGroup(
             leftMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,7 +132,7 @@ public class View extends javax.swing.JFrame {
         leftEEG.setLayout(leftEEGLayout);
         leftEEGLayout.setHorizontalGroup(
             leftEEGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 529, Short.MAX_VALUE)
+            .addGap(0, 560, Short.MAX_VALUE)
         );
         leftEEGLayout.setVerticalGroup(
             leftEEGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,12 +140,12 @@ public class View extends javax.swing.JFrame {
         );
 
         tabEEG.add(leftEEG, new java.awt.GridBagConstraints());
-
-        rightEEG.setLayout(new java.awt.GridLayout(4, 2));
+/*
+        rightEEG.setLayout(new java.awt.GridLayout(4, 1);
         rightEEG.setBorder(BorderFactory.createTitledBorder(""));
         rightEEG.setBackground(Color.WHITE);
         rightEEG.setLayout(new GridBagLayout());
-        //GridBagConstraints GBC = new GridBagConstraints();
+        GridBagConstraints GBC = new GridBagConstraints();
         
         try {
             BufferedImage eeg = ImageIO.read(new File("src/images/updated_eeg_map.png"));
@@ -163,7 +163,7 @@ public class View extends javax.swing.JFrame {
         }
 
         tabEEG.add(rightEEG, new java.awt.GridBagConstraints());
-
+*/
         jTabbedPane1.addTab("EEG", tabEEG);
 
         tabRegion1.setLayout(new java.awt.GridLayout(4, 2));
