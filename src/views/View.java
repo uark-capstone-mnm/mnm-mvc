@@ -116,7 +116,7 @@ public class View extends javax.swing.JFrame {
         rightMain.setLayout(new java.awt.GridBagLayout());
         rightMain.setBorder(BorderFactory.createTitledBorder(""));
         rightMain.setBackground(Color.white);
-        setResizable(false)
+        setResizable(false);
 
         cont.implementRegionImages(rightMain, jTabbedPane1);
 

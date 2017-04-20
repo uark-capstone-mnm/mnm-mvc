@@ -24,6 +24,7 @@ import javax.swing.JTabbedPane;
 import javax.swing.text.MaskFormatter; // Remove with NIRS tester
 
 import models.BrainOverlay;
+import models.Configuration;
 import models.PatientFile.PatientFile;
 import org.apache.commons.io.IOCase;
 import org.apache.commons.io.filefilter.PrefixFileFilter;
@@ -44,6 +45,8 @@ public class Controller {
 
     public void startApplication() {
         View view = new View();
+        Configuration customProps = new Configuration("config.ini");
+        System.out.println(customProps.getOxygenThreshold());
         view.setVisible(true);
     }
 
