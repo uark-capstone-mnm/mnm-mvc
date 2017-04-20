@@ -49,14 +49,28 @@ public class Configuration {
             return 0.00;
 	}
 	
-	public double getEpsilon(int wavelength) {
-            // 760 == 0
-            if(wavelength == 0) {
-                return prefs.node("options").getDouble("epsilon_wavelength1", 0);
+	public double getEpsilon(int wavelength, boolean oxy) {
+            // oxy (HbO2) == true
+            if(oxy) {
+                // 760 == 0
+                if(wavelength == 0) {
+                    return prefs.node("options").getDouble("epsilon_HbO2_wavelength1", 0);
+                }
+                // 840 == 1
+                else if(wavelength == 1) {
+                    return prefs.node("options").getDouble("epsilon_Hb02_wavelength2", 0);
+                }
             }
-            // 840 == 1
-            else if(wavelength == 1) {
-                return prefs.node("options").getDouble("epsilon_wavelength2", 0);
+            // deoxy (Hb) == false
+            else {
+                // 760 == 0
+                if(wavelength == 0) {
+                    return prefs.node("options").getDouble("epsilon_Hb_wavelength1", 0);
+                }
+                // 840 == 1
+                else if(wavelength == 1) {
+                    return prefs.node("options").getDouble("epsilon_Hb_wavelength2", 0);
+                }
             }
             return 0.00;
 	}
