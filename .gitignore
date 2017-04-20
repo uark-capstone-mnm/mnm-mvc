@@ -1,3 +1,4 @@
 build/*
 *.xlsx
 /mnm-mvc/nbproject/private/
+/nbproject/private/
