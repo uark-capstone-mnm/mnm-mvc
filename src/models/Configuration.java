@@ -2,6 +2,7 @@ package models;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
 import java.util.prefs.Preferences;
 
 import org.ini4j.*;
@@ -25,13 +26,11 @@ public class Configuration {
 		}
 	}
 	
-	public double getThreshold(int color) {
-            // yellow == 0
-            if(color == 0) {
+	public double getThreshold(String color) {
+            if(Objects.equals(color, new String("yellow"))) {
                 return prefs.node("options").getDouble("yellowthreshold", 0.00);
             }
-            // red == 1
-            else if(color == 1) {
+            else if(Objects.equals(color, new String("red"))) {
                 return prefs.node("options").getDouble("redthreshold", 0.00);
             }
             return 0.00;
@@ -73,9 +72,5 @@ public class Configuration {
                 }
             }
             return 0.00;
-	}
-	
-	public String getValues() {
-		return prefs.node("options").get("values", "");
 	}
 }
