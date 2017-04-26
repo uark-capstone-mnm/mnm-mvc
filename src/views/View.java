@@ -43,7 +43,7 @@ public class View extends javax.swing.JFrame {
      */
     public View() {
         initComponents();
-        cont.startRecording();
+        //cont.startRecording();
         start.setEnabled(false);
     }
 
@@ -59,6 +59,8 @@ public class View extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         tabBrain = new javax.swing.JPanel();
         leftMain = new javax.swing.JPanel();
+        leftMainLabel = new javax.swing.JLabel();
+        leftMainLabel2 = new javax.swing.JLabel();
         rightMain = new javax.swing.JPanel();
         tabEEG = new javax.swing.JPanel();
         leftEEG = new javax.swing.JPanel();
@@ -210,17 +212,24 @@ public class View extends javax.swing.JFrame {
         tabBrain.setLayout(new javax.swing.BoxLayout(tabBrain, javax.swing.BoxLayout.LINE_AXIS));
 
         leftMain.setBorder(BorderFactory.createTitledBorder(""));
+        leftMain.setLayout(new java.awt.GridLayout(3,1));
 
-        javax.swing.GroupLayout leftMainLayout = new javax.swing.GroupLayout(leftMain);
-        leftMain.setLayout(leftMainLayout);
-        leftMainLayout.setHorizontalGroup(
-            leftMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 567, Short.MAX_VALUE)
-        );
-        leftMainLayout.setVerticalGroup(
-            leftMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 460, Short.MAX_VALUE)
-        );
+        try {
+            GraphModel mainModel = new models.NIRS.NIRSGraphModelA();
+            leftMain.add(new SeriesChartPane(mainModel));
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+
+        leftMainLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        leftMainLabel.setText("Global Oxygenation:");
+        leftMain.add(leftMainLabel);
+
+        leftMainLabel2.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        leftMainLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        leftMainLabel2.setText(cont.getGlobalOxygenation() + "%");
+        leftMain.add(leftMainLabel2);
 
         tabBrain.add(leftMain);
 
@@ -1415,8 +1424,8 @@ public class View extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public static void updateRegion() {
+        int round = (int) (100 * cont.oxygenation.get(cont.region));
       if(cont.region == 0) {
-         int round = (int) (100 * cont.oxygenation);
          N1_jLabel4.setText(round + "%");
          if(cont.color == 1) {
             N1_jLabel2.setForeground(Color.YELLOW);
@@ -1432,7 +1441,6 @@ public class View extends javax.swing.JFrame {
          }
       }
       else if(cont.region == 1) {
-         int round = (int) (100 * cont.oxygenation);
          N2_jLabel4.setText(round + "%");
          if(cont.color == 1) {
             N2_jLabel2.setForeground(Color.YELLOW);
@@ -1448,7 +1456,6 @@ public class View extends javax.swing.JFrame {
          }
       }
       else if(cont.region == 2) {
-         int round = (int) (100 * cont.oxygenation);
          N3_jLabel4.setText(round + "%");
          if(cont.color == 1) {
             N3_jLabel2.setForeground(Color.YELLOW);
@@ -1464,7 +1471,6 @@ public class View extends javax.swing.JFrame {
          }
       }
       else if(cont.region == 3) {
-         int round = (int) (100 * cont.oxygenation);
          N4_jLabel4.setText(round + "%");
          if(cont.color == 1) {
             N4_jLabel2.setForeground(Color.YELLOW);
@@ -1480,7 +1486,6 @@ public class View extends javax.swing.JFrame {
          }
       }
       else if(cont.region == 4) {
-         int round = (int) (100 * cont.oxygenation);
          N5_jLabel4.setText(round + "%");
          if(cont.color == 1) {
             N5_jLabel2.setForeground(Color.YELLOW);
@@ -1496,7 +1501,6 @@ public class View extends javax.swing.JFrame {
          }
       }
       else if(cont.region == 5) {
-         int round = (int) (100 * cont.oxygenation);
          N6_jLabel4.setText(round + "%");
          if(cont.color == 1) {
             N6_jLabel2.setForeground(Color.YELLOW);
@@ -1512,7 +1516,6 @@ public class View extends javax.swing.JFrame {
          }
       }
       else if(cont.region == 6) {
-         int round = (int) (100 * cont.oxygenation);
          N7_jLabel4.setText(round + "%");
          if(cont.color == 1) {
             N7_jLabel2.setForeground(Color.YELLOW);
@@ -1528,7 +1531,6 @@ public class View extends javax.swing.JFrame {
          }
       }
       else if(cont.region == 7) {
-         int round = (int) (100 * cont.oxygenation);
          N8_jLabel4.setText(round + "%");
          if(cont.color == 1) {
             N8_jLabel2.setForeground(Color.YELLOW);
@@ -1668,6 +1670,8 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JPanel leftEEG;
     private javax.swing.JPanel leftMain;
+    private javax.swing.JLabel leftMainLabel;
+    private javax.swing.JLabel leftMainLabel2;
     private javax.swing.JMenu navi;
     private javax.swing.JMenuItem open;
     private javax.swing.JPanel rightEEG;

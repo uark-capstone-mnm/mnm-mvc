@@ -43,7 +43,8 @@ public class Controller {
     
     public int region;
     public int color;
-    public double oxygenation;
+    public static ArrayList<Double> oxygenation;
+    public static int globalOxygenation;
     
     // Moved these outside of creation so I could access them to change the images
     ArrayList<BufferedImage> abiRegions = new ArrayList<BufferedImage>();
@@ -51,6 +52,10 @@ public class Controller {
     ArrayList<JLabel> ajlRegions = new ArrayList<JLabel>();
 
     public void startApplication() {
+        oxygenation = new ArrayList();
+        for(int i = 0; i < 8; i++) {
+            oxygenation.add(0.0);
+        }
         View view = new View();
         Configuration customProps = new Configuration("config.ini");
         System.out.println("Yellow Threshold: " + customProps.getThreshold("yellow"));
@@ -74,6 +79,14 @@ public class Controller {
         }
     }
     
+    public static int getGlobalOxygenation() {
+        Double sum = 0.0;
+        for(int i = 0; i < oxygenation.size(); i++) {
+            sum += oxygenation.get(i);
+        }
+        globalOxygenation = (int) (100 * (10 * sum / 8));
+        return globalOxygenation;
+    }
     
     /* Calls setImage function from BrainOverlay and sets the region and color
      * based on user inputs. This will obviously change once we have a listener
@@ -96,11 +109,11 @@ public class Controller {
     	JOptionPane.showConfirmDialog(null, inputs, "Test Case", JOptionPane.PLAIN_MESSAGE);
     	region = Integer.parseInt(r.getText());
         
-        oxygenation = rand.nextDouble();
-        if(oxygenation < Configuration.getThreshold("red")) {
+        oxygenation.set(region, rand.nextDouble());
+        if(oxygenation.get(region) < Configuration.getThreshold("red")) {
             color = 2;
         }
-        else if(oxygenation >= Configuration.getThreshold("red") && oxygenation <= Configuration.getThreshold("yellow")) {
+        else if(oxygenation.get(region) >= Configuration.getThreshold("red") && oxygenation.get(region) <= Configuration.getThreshold("yellow")) {
             color = 1;
         }
         else {
@@ -127,6 +140,7 @@ public class Controller {
     			System.out.println(e);
     		}
     	}
+        getGlobalOxygenation();
     }
     
     // Color - 1 = Yellow, 2 = Red, Else = Green
