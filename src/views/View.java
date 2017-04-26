@@ -320,7 +320,7 @@ public class View extends javax.swing.JFrame {
         N1_jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         N1_jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        N1_jLabel3.setText("Oxygenation");
+        N1_jLabel3.setText("Oxygenation:");
 
         N1_jLabel4.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         N1_jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -446,7 +446,7 @@ public class View extends javax.swing.JFrame {
         N2_jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         N2_jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        N2_jLabel3.setText("Oxygenation");
+        N2_jLabel3.setText("Oxygenation:");
 
         N2_jLabel4.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         N2_jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -573,7 +573,7 @@ public class View extends javax.swing.JFrame {
         N3_jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         N3_jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        N3_jLabel3.setText("Oxygenation");
+        N3_jLabel3.setText("Oxygenation:");
 
         N3_jLabel4.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         N3_jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -700,7 +700,7 @@ public class View extends javax.swing.JFrame {
         N4_jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         N4_jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        N4_jLabel3.setText("Oxygenation");
+        N4_jLabel3.setText("Oxygenation:");
 
         N4_jLabel4.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         N4_jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -827,7 +827,7 @@ public class View extends javax.swing.JFrame {
         N5_jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         N5_jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        N5_jLabel3.setText("Oxygenation");
+        N5_jLabel3.setText("Oxygenation:");
 
         N5_jLabel4.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         N5_jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -954,7 +954,7 @@ public class View extends javax.swing.JFrame {
         N6_jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         N6_jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        N6_jLabel3.setText("Oxygenation");
+        N6_jLabel3.setText("Oxygenation:");
 
         N6_jLabel4.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         N6_jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -1081,7 +1081,7 @@ public class View extends javax.swing.JFrame {
         N7_jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         N7_jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        N7_jLabel3.setText("Oxygenation");
+        N7_jLabel3.setText("Oxygenation:");
 
         N7_jLabel4.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         N7_jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -1208,7 +1208,7 @@ public class View extends javax.swing.JFrame {
         N8_jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         N8_jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        N8_jLabel3.setText("Oxygenation");
+        N8_jLabel3.setText("Oxygenation:");
 
         N8_jLabel4.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         N8_jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -1416,6 +1416,7 @@ public class View extends javax.swing.JFrame {
 
     public static void updateRegion() {
       if(cont.region == 0) {
+         N1_jLabel4.setText(cont.oxygenation + "%");
          if(cont.color == 1) {
             N1_jLabel2.setForeground(Color.YELLOW);
             N1_jLabel2.setText("Abnormal");
@@ -1426,10 +1427,11 @@ public class View extends javax.swing.JFrame {
          }
          else {
             N1_jLabel2.setForeground(Color.GREEN);
-             N1_jLabel2.setText("Good");
+            N1_jLabel2.setText("Good");
          }
       }
       else if(cont.region == 1) {
+         N2_jLabel4.setText(cont.oxygenation + "%");
          if(cont.color == 1) {
             N2_jLabel2.setForeground(Color.YELLOW);
             N2_jLabel2.setText("Abnormal");
@@ -1440,73 +1442,97 @@ public class View extends javax.swing.JFrame {
          }
          else {
             N2_jLabel2.setForeground(Color.GREEN);
-             N2_jLabel2.setText("Good");
+            N2_jLabel2.setText("Good");
          }
       }
       else if(cont.region == 2) {
-         if(cont.color == 0) {
-            N3_jLabel2.setText("Good");
-         }
-         else if(cont.color == 1) {
+         N3_jLabel4.setText(cont.oxygenation + "%");
+         if(cont.color == 1) {
+            N3_jLabel2.setForeground(Color.YELLOW);
             N3_jLabel2.setText("Abnormal");
          }
          else if(cont.color == 2) {
+            N3_jLabel2.setForeground(Color.RED);
             N3_jLabel2.setText("Critical");
+         }
+         else {
+            N3_jLabel2.setForeground(Color.GREEN);
+            N3_jLabel2.setText("Good");
          }
       }
       else if(cont.region == 3) {
-         if(cont.color == 0) {
-            N4_jLabel2.setText("Good");
-         }
-         else if(cont.color == 1) {
+         N4_jLabel4.setText(cont.oxygenation + "%");
+         if(cont.color == 1) {
+            N4_jLabel2.setForeground(Color.YELLOW);
             N4_jLabel2.setText("Abnormal");
          }
          else if(cont.color == 2) {
+            N4_jLabel2.setForeground(Color.RED);
             N4_jLabel2.setText("Critical");
+         }
+         else {
+            N4_jLabel2.setForeground(Color.GREEN);
+            N4_jLabel2.setText("Good");
          }
       }
       else if(cont.region == 4) {
-         if(cont.color == 0) {
-            N5_jLabel2.setText("Good");
-         }
-         else if(cont.color == 1) {
+         N5_jLabel4.setText(cont.oxygenation + "%");
+         if(cont.color == 1) {
+            N5_jLabel2.setForeground(Color.YELLOW);
             N5_jLabel2.setText("Abnormal");
          }
          else if(cont.color == 2) {
+            N5_jLabel2.setForeground(Color.RED);
             N5_jLabel2.setText("Critical");
+         }
+         else {
+            N5_jLabel2.setForeground(Color.GREEN);
+            N5_jLabel2.setText("Good");
          }
       }
       else if(cont.region == 5) {
-         if(cont.color == 0) {
-            N6_jLabel2.setText("Good");
-         }
-         else if(cont.color == 1) {
+         N6_jLabel4.setText(cont.oxygenation + "%");
+         if(cont.color == 1) {
+            N6_jLabel2.setForeground(Color.YELLOW);
             N6_jLabel2.setText("Abnormal");
          }
          else if(cont.color == 2) {
+            N6_jLabel2.setForeground(Color.RED);
             N6_jLabel2.setText("Critical");
+         }
+         else {
+            N6_jLabel2.setForeground(Color.GREEN);
+            N6_jLabel2.setText("Good");
          }
       }
       else if(cont.region == 6) {
-         if(cont.color == 0) {
-            N7_jLabel2.setText("Good");
-         }
-         else if(cont.color == 1) {
+         N7_jLabel4.setText(cont.oxygenation + "%");
+         if(cont.color == 1) {
+            N7_jLabel2.setForeground(Color.YELLOW);
             N7_jLabel2.setText("Abnormal");
          }
          else if(cont.color == 2) {
+            N7_jLabel2.setForeground(Color.RED);
             N7_jLabel2.setText("Critical");
+         }
+         else {
+            N7_jLabel2.setForeground(Color.GREEN);
+            N7_jLabel2.setText("Good");
          }
       }
       else if(cont.region == 7) {
-         if(cont.color == 0) {
-            N8_jLabel2.setText("Good");
-         }
-         else if(cont.color == 1) {
+         N8_jLabel4.setText(cont.oxygenation + "%");
+         if(cont.color == 1) {
+            N8_jLabel2.setForeground(Color.YELLOW);
             N8_jLabel2.setText("Abnormal");
          }
          else if(cont.color == 2) {
+            N8_jLabel2.setForeground(Color.RED);
             N8_jLabel2.setText("Critical");
+         }
+         else {
+            N8_jLabel2.setForeground(Color.GREEN);
+            N8_jLabel2.setText("Good");
          }
       }
       else {

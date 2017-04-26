@@ -22,7 +22,7 @@ import javax.swing.JOptionPane; // Remove with NIRS tester
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.text.MaskFormatter; // Remove with NIRS tester
-
+import java.util.Random;
 import models.BrainOverlay;
 import models.Configuration;
 import models.PatientFile.PatientFile;
@@ -39,9 +39,11 @@ import tools.SoundWarning;
 public class Controller {
     PatientFile model = new PatientFile();
     BrainOverlay bOverlay = new BrainOverlay();
+    Random rand = new Random();
     
     public int region;
     public int color;
+    public int oxygenation;
     
     // Moved these outside of creation so I could access them to change the images
     ArrayList<BufferedImage> abiRegions = new ArrayList<BufferedImage>();
@@ -85,15 +87,26 @@ public class Controller {
     	MaskFormatter mf = new MaskFormatter("#");
     	mf.setValidCharacters("0123456789");
     	r = new JFormattedTextField(mf);
-    	c = new JFormattedTextField(mf);
+    	//c = new JFormattedTextField(mf);
     	final JComponent[] inputs = new JComponent[] { 
-    			new JLabel("Region (0-7)"), r, new JLabel("Color - 1 = Yellow; 2 = Red; Else = Green"), c
+    			new JLabel("Region (0-7)"), r/*, new JLabel("Color - 1 = Yellow; 2 = Red; Else = Green"), c*/
     			};
     	
     	// Pop-up input panel
     	JOptionPane.showConfirmDialog(null, inputs, "Test Case", JOptionPane.PLAIN_MESSAGE);
     	region = Integer.parseInt(r.getText());
-    	color = Integer.parseInt(c.getText());
+        
+        oxygenation = rand.nextInt(100);
+        if(oxygenation < 70) {
+            color = 2;
+        }
+        else if(oxygenation >= 70 && oxygenation <= 90) {
+            color = 1;
+        }
+        else {
+            color = 0;
+        }
+    	//color = Integer.parseInt(c.getText());
     	
     	// Does the actual work of replacing the image
     	BufferedImage brainImage = bOverlay.setImage(region, color);
