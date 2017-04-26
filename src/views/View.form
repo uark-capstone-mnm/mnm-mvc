@@ -209,7 +209,8 @@
           <SubComponents>
             <Container class="javax.swing.JPanel" name="leftEEG">
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="leftEEG.setBorder(BorderFactory.createTitledBorder(&quot;&quot;));"/>
+                <AuxValue name="JavaCodeGenerator_LayoutCodePost" type="java.lang.String" value="try {&#xa;    GraphModel model = new models.NIRS.NIRSGraphModelA();&#xa;    leftEEG.add(new SeriesChartPane(model));&#xa;    leftEEG.add(new SeriesChartPane(model));&#xa;    leftEEG.add(new SeriesChartPane(model));&#xa;    leftEEG.add(new SeriesChartPane(model));&#xa;}&#xa;catch(Exception e) {&#xa;    e.printStackTrace();&#xa;}"/>
+                <AuxValue name="JavaCodeGenerator_LayoutCodePre" type="java.lang.String" value="leftEEG.setBorder(BorderFactory.createTitledBorder(&quot;&quot;));&#xa;leftEEG.setLayout(new java.awt.GridLayout(0, 1));"/>
               </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -249,9 +250,6 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="tabRegion1">
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_LayoutCodePost" type="java.lang.String" value="GraphModel model = new DefaultGraphModel();&#xa;tabRegion1.add(new SeriesChartPane(model));&#xa;tabRegion1.add(new SeriesChartPane(model));&#xa;tabRegion1.add(new SeriesChartPane(model));&#xa;tabRegion1.add(new SeriesChartPane(model));&#xa;tabRegion1.add(new SeriesChartPane(model));&#xa;tabRegion1.add(new SeriesChartPane(model));&#xa;tabRegion1.add(new SeriesChartPane(model));&#xa;tabRegion1.add(new SeriesChartPane(model));"/>
-          </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Region 1">
@@ -262,7 +260,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
             <Property name="columns" type="int" value="2"/>
-            <Property name="rows" type="int" value="4"/>
+            <Property name="rows" type="int" value="2"/>
           </Layout>
         </Container>
         <Container class="javax.swing.JPanel" name="tabRegion2">

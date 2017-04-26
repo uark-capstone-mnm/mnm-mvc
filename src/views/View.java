@@ -77,7 +77,6 @@ public class View extends javax.swing.JFrame {
         save = new javax.swing.JMenuItem();
         exit = new javax.swing.JMenuItem();
         edit = new javax.swing.JMenu();
-        NIRSTester = new javax.swing.JMenuItem();
         navi = new javax.swing.JMenu();
         back = new javax.swing.JMenuItem();
         forward = new javax.swing.JMenuItem();
@@ -104,7 +103,7 @@ public class View extends javax.swing.JFrame {
         leftMain.setLayout(leftMainLayout);
         leftMainLayout.setHorizontalGroup(
             leftMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 560, Short.MAX_VALUE)
+            .addGap(0, 567, Short.MAX_VALUE)
         );
         leftMainLayout.setVerticalGroup(
             leftMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,8 +114,6 @@ public class View extends javax.swing.JFrame {
 
         rightMain.setLayout(new java.awt.GridBagLayout());
         rightMain.setBorder(BorderFactory.createTitledBorder(""));
-        rightMain.setBackground(Color.white);
-        setResizable(false);
 
         cont.implementRegionImages(rightMain, jTabbedPane1);
 
@@ -127,26 +124,35 @@ public class View extends javax.swing.JFrame {
         tabEEG.setLayout(new java.awt.GridBagLayout());
 
         leftEEG.setBorder(BorderFactory.createTitledBorder(""));
+        leftEEG.setLayout(new java.awt.GridLayout(0, 1));
 
         javax.swing.GroupLayout leftEEGLayout = new javax.swing.GroupLayout(leftEEG);
         leftEEG.setLayout(leftEEGLayout);
         leftEEGLayout.setHorizontalGroup(
             leftEEGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 560, Short.MAX_VALUE)
+            .addGap(0, 529, Short.MAX_VALUE)
         );
         leftEEGLayout.setVerticalGroup(
             leftEEGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 460, Short.MAX_VALUE)
         );
 
+        try {
+            GraphModel model = new models.NIRS.NIRSGraphModelA();
+            leftEEG.add(new SeriesChartPane(model));
+            leftEEG.add(new SeriesChartPane(model));
+            leftEEG.add(new SeriesChartPane(model));
+            leftEEG.add(new SeriesChartPane(model));
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+
         tabEEG.add(leftEEG, new java.awt.GridBagConstraints());
-/*
-        rightEEG.setLayout(new java.awt.GridLayout(4, 1);
+
+        rightEEG.setLayout(new java.awt.GridLayout(4, 2));
         rightEEG.setBorder(BorderFactory.createTitledBorder(""));
-        rightEEG.setBackground(Color.WHITE);
-        rightEEG.setLayout(new GridBagLayout());
-        GridBagConstraints GBC = new GridBagConstraints();
-        
+
         try {
             BufferedImage eeg = ImageIO.read(new File("src/images/updated_eeg_map.png"));
 
@@ -163,27 +169,11 @@ public class View extends javax.swing.JFrame {
         }
 
         tabEEG.add(rightEEG, new java.awt.GridBagConstraints());
-*/
+
         jTabbedPane1.addTab("EEG", tabEEG);
 
-        tabRegion1.setLayout(new java.awt.GridLayout(4, 2));
-
-        GraphModel model = new DefaultGraphModel();
-        try{
-            tabRegion1.add(new SeriesChartPane(model));
-            tabRegion1.add(new SeriesChartPane(model));
-            tabRegion1.add(new SeriesChartPane(model));
-            tabRegion1.add(new SeriesChartPane(model));
-            tabRegion1.add(new SeriesChartPane(model));
-            tabRegion1.add(new SeriesChartPane(model));
-            tabRegion1.add(new SeriesChartPane(model));
-            tabRegion1.add(new SeriesChartPane(model));
-        }
-        catch (Exception e) {
-            System.out.println("Unable to populate tabRegion with graphs");
-        }
-
-        jTabbedPane1.addTab("NIRS 1", tabRegion1);
+        tabRegion1.setLayout(new java.awt.GridLayout(2, 2));
+        jTabbedPane1.addTab("Region 1", tabRegion1);
 
         javax.swing.GroupLayout tabRegion2Layout = new javax.swing.GroupLayout(tabRegion2);
         tabRegion2.setLayout(tabRegion2Layout);
@@ -196,7 +186,7 @@ public class View extends javax.swing.JFrame {
             .addGap(0, 460, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("NIRS 2", tabRegion2);
+        jTabbedPane1.addTab("Region 2", tabRegion2);
 
         javax.swing.GroupLayout tabRegion3Layout = new javax.swing.GroupLayout(tabRegion3);
         tabRegion3.setLayout(tabRegion3Layout);
@@ -209,7 +199,7 @@ public class View extends javax.swing.JFrame {
             .addGap(0, 460, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("NIRS 3", tabRegion3);
+        jTabbedPane1.addTab("Region 3", tabRegion3);
 
         javax.swing.GroupLayout tabRegion4Layout = new javax.swing.GroupLayout(tabRegion4);
         tabRegion4.setLayout(tabRegion4Layout);
@@ -222,7 +212,7 @@ public class View extends javax.swing.JFrame {
             .addGap(0, 460, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("NIRS 4", tabRegion4);
+        jTabbedPane1.addTab("Region 4", tabRegion4);
 
         javax.swing.GroupLayout tabRegion5Layout = new javax.swing.GroupLayout(tabRegion5);
         tabRegion5.setLayout(tabRegion5Layout);
@@ -235,7 +225,7 @@ public class View extends javax.swing.JFrame {
             .addGap(0, 460, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("NIRS 5", tabRegion5);
+        jTabbedPane1.addTab("Region 5", tabRegion5);
 
         javax.swing.GroupLayout tabRegion6Layout = new javax.swing.GroupLayout(tabRegion6);
         tabRegion6.setLayout(tabRegion6Layout);
@@ -248,7 +238,7 @@ public class View extends javax.swing.JFrame {
             .addGap(0, 460, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("NIRS 6", tabRegion6);
+        jTabbedPane1.addTab("Region 6", tabRegion6);
 
         javax.swing.GroupLayout tabRegion7Layout = new javax.swing.GroupLayout(tabRegion7);
         tabRegion7.setLayout(tabRegion7Layout);
@@ -261,7 +251,7 @@ public class View extends javax.swing.JFrame {
             .addGap(0, 460, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("NIRS 7", tabRegion7);
+        jTabbedPane1.addTab("Region 7", tabRegion7);
 
         javax.swing.GroupLayout tabRegion8Layout = new javax.swing.GroupLayout(tabRegion8);
         tabRegion8.setLayout(tabRegion8Layout);
@@ -274,7 +264,7 @@ public class View extends javax.swing.JFrame {
             .addGap(0, 460, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("NIRS 8", tabRegion8);
+        jTabbedPane1.addTab("Region 8", tabRegion8);
 
         file.setText("File");
 
@@ -307,18 +297,6 @@ public class View extends javax.swing.JFrame {
         jMenuBar1.add(file);
 
         edit.setText("Edit");
-        edit.add(NIRSTester);
-        
-        NIRSTester.setText("Test NIRS Region");
-        NIRSTester.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                try {
-                    cont.changeBrainRegion();
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
         jMenuBar1.add(edit);
 
         navi.setText("Navigate");
@@ -363,7 +341,7 @@ public class View extends javax.swing.JFrame {
         actions.add(start);
 
         stop.setText("Stop Recording");
-        stop.setEnabled(true);
+        stop.setEnabled(false);
         stop.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stopActionPerformed(evt);
@@ -500,7 +478,6 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JMenu actions;
     private javax.swing.JMenuItem back;
     private javax.swing.JMenu edit;
-    private javax.swing.JMenuItem NIRSTester;
     private javax.swing.JMenuItem exit;
     private javax.swing.JMenu file;
     private javax.swing.JMenuItem forward;
