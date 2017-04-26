@@ -43,7 +43,7 @@ public class Controller {
     
     public int region;
     public int color;
-    public int oxygenation;
+    public double oxygenation;
     
     // Moved these outside of creation so I could access them to change the images
     ArrayList<BufferedImage> abiRegions = new ArrayList<BufferedImage>();
@@ -96,11 +96,11 @@ public class Controller {
     	JOptionPane.showConfirmDialog(null, inputs, "Test Case", JOptionPane.PLAIN_MESSAGE);
     	region = Integer.parseInt(r.getText());
         
-        oxygenation = rand.nextInt(100);
-        if(oxygenation < 70) {
+        oxygenation = rand.nextDouble();
+        if(oxygenation < Configuration.getThreshold("red")) {
             color = 2;
         }
-        else if(oxygenation >= 70 && oxygenation <= 90) {
+        else if(oxygenation >= Configuration.getThreshold("red") && oxygenation <= Configuration.getThreshold("yellow")) {
             color = 1;
         }
         else {

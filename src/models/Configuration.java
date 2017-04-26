@@ -10,7 +10,7 @@ import org.ini4j.*;
 
 public class Configuration {
 	Ini configFile;
-	Preferences prefs;
+	static Preferences prefs;
 	Wini ini;
 	
 	public Configuration(String config) {
@@ -26,7 +26,7 @@ public class Configuration {
 		}
 	}
 	
-	public double getThreshold(String color) {
+	public static double getThreshold(String color) {
             if(Objects.equals(color, new String("yellow"))) {
                 return prefs.node("options").getDouble("yellowthreshold", 0.00);
             }
@@ -36,7 +36,7 @@ public class Configuration {
             return 0.00;
 	}
         	
-	public double getDPF(int wavelength) {
+	public static double getDPF(int wavelength) {
             // 760 == 0
             if(wavelength == 0) {
                 return prefs.node("options").getDouble("dpf_wavelength1", 0.00);
@@ -48,7 +48,7 @@ public class Configuration {
             return 0.00;
 	}
 	
-	public double getEpsilon(int wavelength, boolean oxy) {
+	public static double getEpsilon(int wavelength, boolean oxy) {
             // oxy (HbO2) == true
             if(oxy) {
                 // 760 == 0

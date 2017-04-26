@@ -1416,7 +1416,8 @@ public class View extends javax.swing.JFrame {
 
     public static void updateRegion() {
       if(cont.region == 0) {
-         N1_jLabel4.setText(cont.oxygenation + "%");
+         int round = (int) (100 * cont.oxygenation);
+         N1_jLabel4.setText(round + "%");
          if(cont.color == 1) {
             N1_jLabel2.setForeground(Color.YELLOW);
             N1_jLabel2.setText("Abnormal");
@@ -1431,7 +1432,8 @@ public class View extends javax.swing.JFrame {
          }
       }
       else if(cont.region == 1) {
-         N2_jLabel4.setText(cont.oxygenation + "%");
+         int round = (int) (100 * cont.oxygenation);
+         N2_jLabel4.setText(round + "%");
          if(cont.color == 1) {
             N2_jLabel2.setForeground(Color.YELLOW);
             N2_jLabel2.setText("Abnormal");
@@ -1446,7 +1448,8 @@ public class View extends javax.swing.JFrame {
          }
       }
       else if(cont.region == 2) {
-         N3_jLabel4.setText(cont.oxygenation + "%");
+         int round = (int) (100 * cont.oxygenation);
+         N3_jLabel4.setText(round + "%");
          if(cont.color == 1) {
             N3_jLabel2.setForeground(Color.YELLOW);
             N3_jLabel2.setText("Abnormal");
@@ -1461,7 +1464,8 @@ public class View extends javax.swing.JFrame {
          }
       }
       else if(cont.region == 3) {
-         N4_jLabel4.setText(cont.oxygenation + "%");
+         int round = (int) (100 * cont.oxygenation);
+         N4_jLabel4.setText(round + "%");
          if(cont.color == 1) {
             N4_jLabel2.setForeground(Color.YELLOW);
             N4_jLabel2.setText("Abnormal");
@@ -1476,7 +1480,8 @@ public class View extends javax.swing.JFrame {
          }
       }
       else if(cont.region == 4) {
-         N5_jLabel4.setText(cont.oxygenation + "%");
+         int round = (int) (100 * cont.oxygenation);
+         N5_jLabel4.setText(round + "%");
          if(cont.color == 1) {
             N5_jLabel2.setForeground(Color.YELLOW);
             N5_jLabel2.setText("Abnormal");
@@ -1491,7 +1496,8 @@ public class View extends javax.swing.JFrame {
          }
       }
       else if(cont.region == 5) {
-         N6_jLabel4.setText(cont.oxygenation + "%");
+         int round = (int) (100 * cont.oxygenation);
+         N6_jLabel4.setText(round + "%");
          if(cont.color == 1) {
             N6_jLabel2.setForeground(Color.YELLOW);
             N6_jLabel2.setText("Abnormal");
@@ -1506,7 +1512,8 @@ public class View extends javax.swing.JFrame {
          }
       }
       else if(cont.region == 6) {
-         N7_jLabel4.setText(cont.oxygenation + "%");
+         int round = (int) (100 * cont.oxygenation);
+         N7_jLabel4.setText(round + "%");
          if(cont.color == 1) {
             N7_jLabel2.setForeground(Color.YELLOW);
             N7_jLabel2.setText("Abnormal");
@@ -1521,7 +1528,8 @@ public class View extends javax.swing.JFrame {
          }
       }
       else if(cont.region == 7) {
-         N8_jLabel4.setText(cont.oxygenation + "%");
+         int round = (int) (100 * cont.oxygenation);
+         N8_jLabel4.setText(round + "%");
          if(cont.color == 1) {
             N8_jLabel2.setForeground(Color.YELLOW);
             N8_jLabel2.setText("Abnormal");
