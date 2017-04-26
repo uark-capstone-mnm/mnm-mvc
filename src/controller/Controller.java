@@ -40,6 +40,9 @@ public class Controller {
     PatientFile model = new PatientFile();
     BrainOverlay bOverlay = new BrainOverlay();
     
+    public int region;
+    public int color;
+    
     // Moved these outside of creation so I could access them to change the images
     ArrayList<BufferedImage> abiRegions = new ArrayList<BufferedImage>();
     ArrayList<ImageIcon> aiRegions = new ArrayList<ImageIcon>();
@@ -77,8 +80,6 @@ public class Controller {
      * at a given region
      */
     public void changeBrainRegion() throws ParseException{
-    	
-    	int region, color;
     	JFormattedTextField r, c;
     	// Mask for reduction of user input errors for testing only
     	MaskFormatter mf = new MaskFormatter("#");
@@ -97,12 +98,14 @@ public class Controller {
     	// Does the actual work of replacing the image
     	BufferedImage brainImage = bOverlay.setImage(region, color);
     	ajlRegions.get(region).setIcon(new ImageIcon(brainImage));
+        View.updateText();
     	if (color == 1){
     		try {
     			new SoundWarning().start();
     		} catch (Exception e){
     			System.out.println(e);
     		}
+                
     	}
     	else if (color == 2){
     		try {
@@ -132,6 +135,8 @@ public class Controller {
     			System.out.println(e);
     		}
     	}
+        
+        
     }
 
     public void implementRegionImages(JPanel parent, JTabbedPane tabbed) {
