@@ -98,7 +98,7 @@ public class Controller {
     	// Does the actual work of replacing the image
     	BufferedImage brainImage = bOverlay.setImage(region, color);
     	ajlRegions.get(region).setIcon(new ImageIcon(brainImage));
-        View.updateText();
+        View.updateRegion();
     	if (color == 1){
     		try {
     			new SoundWarning().start();

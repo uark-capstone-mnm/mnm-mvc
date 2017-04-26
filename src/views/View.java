@@ -794,16 +794,126 @@ public class View extends javax.swing.JFrame {
 
         // BEGIN NIRS REGION 5
 
-        javax.swing.GroupLayout tabRegion5Layout = new javax.swing.GroupLayout(tabRegion5);
-        tabRegion5.setLayout(tabRegion5Layout);
-        tabRegion5Layout.setHorizontalGroup(
-            tabRegion5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 607, Short.MAX_VALUE)
+        tabRegion5.setLayout(new java.awt.GridLayout(2,2));
+        N5_jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        N5_jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        N5_jLabel1.setText("Status:");
+
+        N5_jLabel2.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        N5_jLabel2.setForeground(new java.awt.Color(0, 128, 0));
+        N5_jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        N5_jLabel2.setText("Good");
+
+        javax.swing.GroupLayout N5_jPanel1Layout = new javax.swing.GroupLayout(N5_jPanel1);
+        N5_jPanel1.setLayout(N5_jPanel1Layout);
+        N5_jPanel1Layout.setHorizontalGroup(
+            N5_jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(N5_jPanel1Layout.createSequentialGroup()
+                .addComponent(N5_jLabel1)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(N5_jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
         );
-        tabRegion5Layout.setVerticalGroup(
-            tabRegion5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 460, Short.MAX_VALUE)
+        N5_jPanel1Layout.setVerticalGroup(
+            N5_jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(N5_jPanel1Layout.createSequentialGroup()
+                .addComponent(N5_jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(N5_jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE))
         );
+
+        tabRegion5.add(N5_jPanel1);
+
+        N5_jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        N5_jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        N5_jLabel3.setText("Oxygenation");
+
+        N5_jLabel4.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        N5_jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        N5_jLabel4.setText("78%");
+
+        N5_jPanel5.setLayout(new java.awt.GridLayout());
+
+        try {
+            GraphModel model = new models.NIRS.NIRSGraphModelA();
+            N5_jPanel5.add(new SeriesChartPane(model));
+        }
+        catch (FileNotFoundException e) {
+            System.out.println("oh no");
+        }
+
+        javax.swing.GroupLayout N5_jPanel2Layout = new javax.swing.GroupLayout(N5_jPanel2);
+        N5_jPanel2.setLayout(N5_jPanel2Layout);
+        N5_jPanel2Layout.setHorizontalGroup(
+            N5_jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(N5_jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(N5_jPanel2Layout.createSequentialGroup()
+                .addComponent(N5_jLabel3)
+                .addGap(0, 167, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, N5_jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(N5_jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        N5_jPanel2Layout.setVerticalGroup(
+            N5_jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(N5_jPanel2Layout.createSequentialGroup()
+                .addComponent(N5_jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(N5_jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(N5_jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        try {
+            GraphModel model = new models.NIRS.NIRSGraphModelA();
+            N5_jPanel2.add(new SeriesChartPane(model));
+        }
+        catch (FileNotFoundException e) {
+            System.out.println("oh no");
+        }
+
+        tabRegion5.add(N5_jPanel2);
+
+        N5_jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        N5_jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        N5_jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        N5_jLabel5.setText("Blood Flow");
+
+        javax.swing.GroupLayout N5_jPanel3Layout = new javax.swing.GroupLayout(N5_jPanel3);
+        N5_jPanel3.setLayout(N5_jPanel3Layout);
+        N5_jPanel3Layout.setHorizontalGroup(
+            N5_jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(N5_jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
+        );
+        N5_jPanel3Layout.setVerticalGroup(
+            N5_jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(N5_jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+        );
+
+        tabRegion5.add(N5_jPanel3);
+
+        N5_jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        N5_jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        N5_jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        N5_jLabel6.setText("Temperature");
+
+        javax.swing.GroupLayout N5_jPanel4Layout = new javax.swing.GroupLayout(N5_jPanel4);
+        N5_jPanel4.setLayout(N5_jPanel4Layout);
+        N5_jPanel4Layout.setHorizontalGroup(
+            N5_jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(N5_jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
+        );
+        N5_jPanel4Layout.setVerticalGroup(
+            N5_jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(N5_jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+        );
+
+        tabRegion5.add(N5_jPanel4);
 
         jTabbedPane1.addTab("Region 5", tabRegion5);
 
@@ -811,16 +921,126 @@ public class View extends javax.swing.JFrame {
 
         // BEGIN NIRS REGION 6
 
-        javax.swing.GroupLayout tabRegion6Layout = new javax.swing.GroupLayout(tabRegion6);
-        tabRegion6.setLayout(tabRegion6Layout);
-        tabRegion6Layout.setHorizontalGroup(
-            tabRegion6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 607, Short.MAX_VALUE)
+        tabRegion6.setLayout(new java.awt.GridLayout(2,2));
+        N6_jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        N6_jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        N6_jLabel1.setText("Status:");
+
+        N6_jLabel2.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        N6_jLabel2.setForeground(new java.awt.Color(0, 128, 0));
+        N6_jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        N6_jLabel2.setText("Good");
+
+        javax.swing.GroupLayout N6_jPanel1Layout = new javax.swing.GroupLayout(N6_jPanel1);
+        N6_jPanel1.setLayout(N6_jPanel1Layout);
+        N6_jPanel1Layout.setHorizontalGroup(
+            N6_jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(N6_jPanel1Layout.createSequentialGroup()
+                .addComponent(N6_jLabel1)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(N6_jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
         );
-        tabRegion6Layout.setVerticalGroup(
-            tabRegion6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 460, Short.MAX_VALUE)
+        N6_jPanel1Layout.setVerticalGroup(
+            N6_jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(N6_jPanel1Layout.createSequentialGroup()
+                .addComponent(N6_jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(N6_jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE))
         );
+
+        tabRegion6.add(N6_jPanel1);
+
+        N6_jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        N6_jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        N6_jLabel3.setText("Oxygenation");
+
+        N6_jLabel4.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        N6_jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        N6_jLabel4.setText("78%");
+
+        N6_jPanel5.setLayout(new java.awt.GridLayout());
+
+        try {
+            GraphModel model = new models.NIRS.NIRSGraphModelA();
+            N6_jPanel5.add(new SeriesChartPane(model));
+        }
+        catch (FileNotFoundException e) {
+            System.out.println("oh no");
+        }
+
+        javax.swing.GroupLayout N6_jPanel2Layout = new javax.swing.GroupLayout(N6_jPanel2);
+        N6_jPanel2.setLayout(N6_jPanel2Layout);
+        N6_jPanel2Layout.setHorizontalGroup(
+            N6_jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(N6_jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(N6_jPanel2Layout.createSequentialGroup()
+                .addComponent(N6_jLabel3)
+                .addGap(0, 167, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, N6_jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(N6_jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        N6_jPanel2Layout.setVerticalGroup(
+            N6_jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(N6_jPanel2Layout.createSequentialGroup()
+                .addComponent(N6_jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(N6_jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(N6_jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        try {
+            GraphModel model = new models.NIRS.NIRSGraphModelA();
+            N6_jPanel2.add(new SeriesChartPane(model));
+        }
+        catch (FileNotFoundException e) {
+            System.out.println("oh no");
+        }
+
+        tabRegion6.add(N6_jPanel2);
+
+        N6_jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        N6_jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        N6_jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        N6_jLabel5.setText("Blood Flow");
+
+        javax.swing.GroupLayout N6_jPanel3Layout = new javax.swing.GroupLayout(N6_jPanel3);
+        N6_jPanel3.setLayout(N6_jPanel3Layout);
+        N6_jPanel3Layout.setHorizontalGroup(
+            N6_jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(N6_jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
+        );
+        N6_jPanel3Layout.setVerticalGroup(
+            N6_jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(N6_jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+        );
+
+        tabRegion6.add(N6_jPanel3);
+
+        N6_jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        N6_jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        N6_jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        N6_jLabel6.setText("Temperature");
+
+        javax.swing.GroupLayout N6_jPanel4Layout = new javax.swing.GroupLayout(N6_jPanel4);
+        N6_jPanel4.setLayout(N6_jPanel4Layout);
+        N6_jPanel4Layout.setHorizontalGroup(
+            N6_jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(N6_jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
+        );
+        N6_jPanel4Layout.setVerticalGroup(
+            N6_jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(N6_jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+        );
+
+        tabRegion6.add(N6_jPanel4);
 
         jTabbedPane1.addTab("Region 6", tabRegion6);
 
@@ -828,16 +1048,126 @@ public class View extends javax.swing.JFrame {
 
         // BEGIN NIRS REGION 7
 
-        javax.swing.GroupLayout tabRegion7Layout = new javax.swing.GroupLayout(tabRegion7);
-        tabRegion7.setLayout(tabRegion7Layout);
-        tabRegion7Layout.setHorizontalGroup(
-            tabRegion7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 607, Short.MAX_VALUE)
+        tabRegion7.setLayout(new java.awt.GridLayout(2,2));
+        N7_jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        N7_jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        N7_jLabel1.setText("Status:");
+
+        N7_jLabel2.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        N7_jLabel2.setForeground(new java.awt.Color(0, 128, 0));
+        N7_jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        N7_jLabel2.setText("Good");
+
+        javax.swing.GroupLayout N7_jPanel1Layout = new javax.swing.GroupLayout(N7_jPanel1);
+        N7_jPanel1.setLayout(N7_jPanel1Layout);
+        N7_jPanel1Layout.setHorizontalGroup(
+            N7_jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(N7_jPanel1Layout.createSequentialGroup()
+                .addComponent(N7_jLabel1)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(N7_jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
         );
-        tabRegion7Layout.setVerticalGroup(
-            tabRegion7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 460, Short.MAX_VALUE)
+        N7_jPanel1Layout.setVerticalGroup(
+            N7_jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(N7_jPanel1Layout.createSequentialGroup()
+                .addComponent(N7_jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(N7_jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE))
         );
+
+        tabRegion7.add(N7_jPanel1);
+
+        N7_jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        N7_jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        N7_jLabel3.setText("Oxygenation");
+
+        N7_jLabel4.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        N7_jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        N7_jLabel4.setText("78%");
+
+        N7_jPanel5.setLayout(new java.awt.GridLayout());
+
+        try {
+            GraphModel model = new models.NIRS.NIRSGraphModelA();
+            N7_jPanel5.add(new SeriesChartPane(model));
+        }
+        catch (FileNotFoundException e) {
+            System.out.println("oh no");
+        }
+
+        javax.swing.GroupLayout N7_jPanel2Layout = new javax.swing.GroupLayout(N7_jPanel2);
+        N7_jPanel2.setLayout(N7_jPanel2Layout);
+        N7_jPanel2Layout.setHorizontalGroup(
+            N7_jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(N7_jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(N7_jPanel2Layout.createSequentialGroup()
+                .addComponent(N7_jLabel3)
+                .addGap(0, 167, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, N7_jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(N7_jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        N7_jPanel2Layout.setVerticalGroup(
+            N7_jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(N7_jPanel2Layout.createSequentialGroup()
+                .addComponent(N7_jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(N7_jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(N7_jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        try {
+            GraphModel model = new models.NIRS.NIRSGraphModelA();
+            N7_jPanel2.add(new SeriesChartPane(model));
+        }
+        catch (FileNotFoundException e) {
+            System.out.println("oh no");
+        }
+
+        tabRegion7.add(N7_jPanel2);
+
+        N7_jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        N7_jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        N7_jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        N7_jLabel5.setText("Blood Flow");
+
+        javax.swing.GroupLayout N7_jPanel3Layout = new javax.swing.GroupLayout(N7_jPanel3);
+        N7_jPanel3.setLayout(N7_jPanel3Layout);
+        N7_jPanel3Layout.setHorizontalGroup(
+            N7_jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(N7_jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
+        );
+        N7_jPanel3Layout.setVerticalGroup(
+            N7_jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(N7_jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+        );
+
+        tabRegion7.add(N7_jPanel3);
+
+        N7_jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        N7_jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        N7_jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        N7_jLabel6.setText("Temperature");
+
+        javax.swing.GroupLayout N7_jPanel4Layout = new javax.swing.GroupLayout(N7_jPanel4);
+        N7_jPanel4.setLayout(N7_jPanel4Layout);
+        N7_jPanel4Layout.setHorizontalGroup(
+            N7_jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(N7_jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
+        );
+        N7_jPanel4Layout.setVerticalGroup(
+            N7_jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(N7_jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+        );
+
+        tabRegion7.add(N7_jPanel4);
 
         jTabbedPane1.addTab("Region 7", tabRegion7);
 
@@ -845,16 +1175,126 @@ public class View extends javax.swing.JFrame {
 
         // BEGIN NIRS REGION 8
 
-        javax.swing.GroupLayout tabRegion8Layout = new javax.swing.GroupLayout(tabRegion8);
-        tabRegion8.setLayout(tabRegion8Layout);
-        tabRegion8Layout.setHorizontalGroup(
-            tabRegion8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 607, Short.MAX_VALUE)
+        tabRegion8.setLayout(new java.awt.GridLayout(2,2));
+        N8_jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        N8_jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        N8_jLabel1.setText("Status:");
+
+        N8_jLabel2.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        N8_jLabel2.setForeground(new java.awt.Color(0, 128, 0));
+        N8_jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        N8_jLabel2.setText("Good");
+
+        javax.swing.GroupLayout N8_jPanel1Layout = new javax.swing.GroupLayout(N8_jPanel1);
+        N8_jPanel1.setLayout(N8_jPanel1Layout);
+        N8_jPanel1Layout.setHorizontalGroup(
+            N8_jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(N8_jPanel1Layout.createSequentialGroup()
+                .addComponent(N8_jLabel1)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(N8_jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
         );
-        tabRegion8Layout.setVerticalGroup(
-            tabRegion8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 460, Short.MAX_VALUE)
+        N8_jPanel1Layout.setVerticalGroup(
+            N8_jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(N8_jPanel1Layout.createSequentialGroup()
+                .addComponent(N8_jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(N8_jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE))
         );
+
+        tabRegion8.add(N8_jPanel1);
+
+        N8_jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        N8_jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        N8_jLabel3.setText("Oxygenation");
+
+        N8_jLabel4.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        N8_jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        N8_jLabel4.setText("78%");
+
+        N8_jPanel5.setLayout(new java.awt.GridLayout());
+
+        try {
+            GraphModel model = new models.NIRS.NIRSGraphModelA();
+            N8_jPanel5.add(new SeriesChartPane(model));
+        }
+        catch (FileNotFoundException e) {
+            System.out.println("oh no");
+        }
+
+        javax.swing.GroupLayout N8_jPanel2Layout = new javax.swing.GroupLayout(N8_jPanel2);
+        N8_jPanel2.setLayout(N8_jPanel2Layout);
+        N8_jPanel2Layout.setHorizontalGroup(
+            N8_jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(N8_jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(N8_jPanel2Layout.createSequentialGroup()
+                .addComponent(N8_jLabel3)
+                .addGap(0, 167, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, N8_jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(N8_jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        N8_jPanel2Layout.setVerticalGroup(
+            N8_jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(N8_jPanel2Layout.createSequentialGroup()
+                .addComponent(N8_jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(N8_jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(N8_jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        try {
+            GraphModel model = new models.NIRS.NIRSGraphModelA();
+            N8_jPanel2.add(new SeriesChartPane(model));
+        }
+        catch (FileNotFoundException e) {
+            System.out.println("oh no");
+        }
+
+        tabRegion8.add(N8_jPanel2);
+
+        N8_jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        N8_jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        N8_jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        N8_jLabel5.setText("Blood Flow");
+
+        javax.swing.GroupLayout N8_jPanel3Layout = new javax.swing.GroupLayout(N8_jPanel3);
+        N8_jPanel3.setLayout(N8_jPanel3Layout);
+        N8_jPanel3Layout.setHorizontalGroup(
+            N8_jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(N8_jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
+        );
+        N8_jPanel3Layout.setVerticalGroup(
+            N8_jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(N8_jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+        );
+
+        tabRegion8.add(N8_jPanel3);
+
+        N8_jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        N8_jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        N8_jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        N8_jLabel6.setText("Temperature");
+
+        javax.swing.GroupLayout N8_jPanel4Layout = new javax.swing.GroupLayout(N8_jPanel4);
+        N8_jPanel4.setLayout(N8_jPanel4Layout);
+        N8_jPanel4Layout.setHorizontalGroup(
+            N8_jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(N8_jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
+        );
+        N8_jPanel4Layout.setVerticalGroup(
+            N8_jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(N8_jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+        );
+
+        tabRegion8.add(N8_jPanel4);
 
         jTabbedPane1.addTab("Region 8", tabRegion8);
 
@@ -974,7 +1414,7 @@ public class View extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public static void updateText() {
+    public static void updateRegion() {
       if(cont.region == 0) {
          if(cont.color == 1) {
             N1_jLabel2.setForeground(Color.YELLOW);
@@ -1025,50 +1465,50 @@ public class View extends javax.swing.JFrame {
             N4_jLabel2.setText("Critical");
          }
       }
-      // else if(region == 4) {
-      //    if(color == 0) {
-      //       N5_jLabel2.setText("Good");
-      //    }
-      //    else if(color == 1) {
-      //       N5_jLabel2.setText("Abnormal");
-      //    }
-      //    else if(color == 2) {
-      //       N5_jLabel2.setText("Critical");
-      //    }
-      // }
-      // else if(region == 5) {
-      //    if(color == 0) {
-      //       N6_jLabel2.setText("Good");
-      //    }
-      //    else if(color == 1) {
-      //       N6_jLabel2.setText("Abnormal");
-      //    }
-      //    else if(color == 2) {
-      //       N6_jLabel2.setText("Critical");
-      //    }
-      // }
-      // else if(region == 6) {
-      //    if(color == 0) {
-      //       N7_jLabel2.setText("Good");
-      //    }
-      //    else if(color == 1) {
-      //       N7_jLabel2.setText("Abnormal");
-      //    }
-      //    else if(color == 2) {
-      //       N7_jLabel2.setText("Critical");
-      //    }
-      // }
-      // else if(region == 7) {
-      //    if(color == 0) {
-      //       N1_jLabel2.setText("Good");
-      //    }
-      //    else if(color == 1) {
-      //       N1_jLabel2.setText("Abnormal");
-      //    }
-      //    else if(color == 2) {
-      //       N1_jLabel2.setText("Critical");
-      //    }
-      // }
+      else if(cont.region == 4) {
+         if(cont.color == 0) {
+            N5_jLabel2.setText("Good");
+         }
+         else if(cont.color == 1) {
+            N5_jLabel2.setText("Abnormal");
+         }
+         else if(cont.color == 2) {
+            N5_jLabel2.setText("Critical");
+         }
+      }
+      else if(cont.region == 5) {
+         if(cont.color == 0) {
+            N6_jLabel2.setText("Good");
+         }
+         else if(cont.color == 1) {
+            N6_jLabel2.setText("Abnormal");
+         }
+         else if(cont.color == 2) {
+            N6_jLabel2.setText("Critical");
+         }
+      }
+      else if(cont.region == 6) {
+         if(cont.color == 0) {
+            N7_jLabel2.setText("Good");
+         }
+         else if(cont.color == 1) {
+            N7_jLabel2.setText("Abnormal");
+         }
+         else if(cont.color == 2) {
+            N7_jLabel2.setText("Critical");
+         }
+      }
+      else if(cont.region == 7) {
+         if(cont.color == 0) {
+            N8_jLabel2.setText("Good");
+         }
+         else if(cont.color == 1) {
+            N8_jLabel2.setText("Abnormal");
+         }
+         else if(cont.color == 2) {
+            N8_jLabel2.setText("Critical");
+         }
+      }
       else {
          System.out.println("yikes");
       }
