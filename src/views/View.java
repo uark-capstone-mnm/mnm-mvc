@@ -43,7 +43,7 @@ public class View extends javax.swing.JFrame {
      */
     public View() {
         initComponents();
-        //cont.startRecording();
+        cont.startRecording();
         start.setEnabled(false);
     }
 
@@ -73,6 +73,7 @@ public class View extends javax.swing.JFrame {
         tabRegion6 = new javax.swing.JPanel();
         tabRegion7 = new javax.swing.JPanel();
         tabRegion8 = new javax.swing.JPanel();
+        tabRegion9 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         file = new javax.swing.JMenu();
         open = new javax.swing.JMenuItem();
@@ -1309,6 +1310,13 @@ public class View extends javax.swing.JFrame {
 
         // END NIRS REGION 8
 
+        // BEGIN EE TESTING TAB
+
+        tabRegion9.add(new JLabel("testing"));
+        jTabbedPane1.addTab("EE Test", tabRegion9);
+
+        // END EE TESTING TAB
+
         file.setText("File");
 
         open.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
@@ -1423,8 +1431,13 @@ public class View extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public static void updateOxygenation() {
+      leftMainLabel2.setText(cont.globalOxygenation + "%");
+   }
+
     public static void updateRegion() {
         int round = (int) (100 * cont.oxygenation.get(cont.region));
+
       if(cont.region == 0) {
          N1_jLabel4.setText(round + "%");
          if(cont.color == 1) {
@@ -1671,7 +1684,7 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JPanel leftEEG;
     private javax.swing.JPanel leftMain;
     private javax.swing.JLabel leftMainLabel;
-    private javax.swing.JLabel leftMainLabel2;
+    private static javax.swing.JLabel leftMainLabel2;
     private javax.swing.JMenu navi;
     private javax.swing.JMenuItem open;
     private javax.swing.JPanel rightEEG;
@@ -1689,6 +1702,7 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JPanel tabRegion6;
     private javax.swing.JPanel tabRegion7;
     private javax.swing.JPanel tabRegion8;
+    private javax.swing.JPanel tabRegion9;
 
     // NIRS REGION 1
    private static javax.swing.JPanel N1_jPanel1;

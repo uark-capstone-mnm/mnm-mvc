@@ -84,7 +84,7 @@ public class Controller {
         for(int i = 0; i < oxygenation.size(); i++) {
             sum += oxygenation.get(i);
         }
-        globalOxygenation = (int) (100 * (10 * sum / 8));
+        globalOxygenation = (int) (100 * (sum / 8));
         return globalOxygenation;
     }
     
@@ -141,6 +141,7 @@ public class Controller {
     		}
     	}
         getGlobalOxygenation();
+        View.updateOxygenation();
     }
     
     // Color - 1 = Yellow, 2 = Red, Else = Green
