@@ -56,8 +56,7 @@ public class Controller {
         oxygenation = new ArrayList();
         colors = new ArrayList();
         for(int i = 0; i < 8; i++) {
-            oxygenation.add(rand.nextDouble());
-            
+            oxygenation.add((double) ((rand.nextInt(50) + 50) / 100.0));
             if(oxygenation.get(i) < 0.7) {
                 colors.add(2);
             }
@@ -124,7 +123,7 @@ public class Controller {
     	JOptionPane.showConfirmDialog(null, inputs, "Test Case", JOptionPane.PLAIN_MESSAGE);
     	region = Integer.parseInt(r.getText());
         
-        oxygenation.set(region, rand.nextDouble());
+        oxygenation.set(region, (double) ((rand.nextInt(50) + 50) / 100));
         System.out.println(region + ", " + oxygenation.get(region));
         if(oxygenation.get(region) < Configuration.getThreshold("red")) {
             colors.set(region, 2);
