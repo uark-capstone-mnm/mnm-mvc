@@ -43,6 +43,7 @@ public class Controller {
     
     public int region;
     public int color;
+    public static ArrayList<Integer> colors;
     public static ArrayList<Double> oxygenation;
     public static int globalOxygenation;
     
@@ -53,14 +54,27 @@ public class Controller {
 
     public void startApplication() {
         oxygenation = new ArrayList();
+        colors = new ArrayList();
         for(int i = 0; i < 8; i++) {
-            oxygenation.add(0.0);
+            oxygenation.add(rand.nextDouble());
+            
+            if(oxygenation.get(i) < 0.7) {
+                colors.set(i, 2);
+            }
+            else if(oxygenation.get(i) >= 0.7 && oxygenation.get(i) <= 0.9) {
+                colors.set(i, 1);
+            }
+            else {
+                colors.set(i, 0);
         }
+        }    
+        
         View view = new View();
+        
         Configuration customProps = new Configuration("config.ini");
-        System.out.println("Yellow Threshold: " + customProps.getThreshold("yellow"));
-        System.out.println("Red Threshold: " + customProps.getThreshold("red"));
-        System.out.println("Sound: " + customProps.getCriticalSoundPitch());
+//        System.out.println("Yellow Threshold: " + customProps.getThreshold("yellow"));
+//        System.out.println("Red Threshold: " + customProps.getThreshold("red"));
+//        System.out.println("Sound: " + customProps.getCriticalSoundPitch());
         view.setVisible(true);
     }
 
@@ -111,14 +125,15 @@ public class Controller {
     	region = Integer.parseInt(r.getText());
         
         oxygenation.set(region, rand.nextDouble());
+        System.out.println(region + ", " + oxygenation.get(region));
         if(oxygenation.get(region) < Configuration.getThreshold("red")) {
-            color = 2;
+            colors.set(region, 2);
         }
         else if(oxygenation.get(region) >= Configuration.getThreshold("red") && oxygenation.get(region) <= Configuration.getThreshold("yellow")) {
-            color = 1;
+            colors.set(region, 1);
         }
         else {
-            color = 0;
+            colors.set(region, 0);
         }
     	//color = Integer.parseInt(c.getText());
     	
@@ -136,9 +151,9 @@ public class Controller {
     	}
     	else if (color == 2){
     		try {
-    			new SoundCritical().start();
+                    new SoundCritical().start();
     		} catch (Exception e){
-    			System.out.println(e);
+                    System.out.println(e);
     		}
     	}
         getGlobalOxygenation();
@@ -150,20 +165,26 @@ public class Controller {
     public void changeBrainRegion(int color, int region) throws ParseException{
     	BufferedImage brainImage = bOverlay.setImage(region, color);
     	ajlRegions.get(region).setIcon(new ImageIcon(brainImage));
+    	View.updateRegion();
     	if (color == 1){
-    		try {
-    			new SoundWarning().start();
-    		} catch (Exception e){
-    			System.out.println(e);
-    		}
+            try {
+                new SoundWarning().start();
+            } 
+            catch (Exception e){
+                System.out.println(e);
+            }
+                
     	}
     	else if (color == 2){
-    		try {
-    			new SoundCritical().start();
-    		} catch (Exception e){
-    			System.out.println(e);
-    		}
+            try {
+                new SoundCritical().start();
+            } 
+            catch (Exception e){
+                System.out.println(e);
+            }
     	}
+        getGlobalOxygenation();
+        View.updateOxygenation();
         
         
     }

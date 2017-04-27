@@ -6,6 +6,7 @@
 package views;
 
 import controller.Controller;
+import static controller.Controller.oxygenation;
 
 import java.awt.Color;
 import java.awt.GridBagConstraints;
@@ -27,6 +28,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import models.BrainOverlay;
+import models.Configuration;
 import models.NIRS.DefaultGraphModel;
 import models.SeriesChartPane;
 import tools.ImageMap;
@@ -43,7 +45,7 @@ public class View extends javax.swing.JFrame {
      */
     public View() {
         initComponents();
-        cont.startRecording();
+        //cont.startRecording();
         start.setEnabled(false);
     }
 
@@ -81,7 +83,6 @@ public class View extends javax.swing.JFrame {
         exit = new javax.swing.JMenuItem();
         edit = new javax.swing.JMenu();
         NIRSTester = new javax.swing.JMenuItem();
-        AdjustAlertSounds = new javax.swing.JMenuItem();
         navi = new javax.swing.JMenu();
         back = new javax.swing.JMenuItem();
         forward = new javax.swing.JMenuItem();
@@ -211,7 +212,8 @@ public class View extends javax.swing.JFrame {
 
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.BOTTOM);
 
-        tabBrain.setLayout(new javax.swing.BoxLayout(tabBrain, javax.swing.BoxLayout.LINE_AXIS));
+        //tabBrain.setLayout(new javax.swing.BoxLayout(tabBrain, javax.swing.BoxLayout.LINE_AXIS));
+        tabBrain.setLayout(new java.awt.GridBagLayout());
 
         leftMain.setBorder(BorderFactory.createTitledBorder(""));
         leftMain.setLayout(new java.awt.GridLayout(3,1));
@@ -335,7 +337,8 @@ public class View extends javax.swing.JFrame {
 
         N1_jLabel4.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         N1_jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        N1_jLabel4.setText("78%");
+        int round = (int) (100 * cont.oxygenation.get(0));
+        N1_jLabel4.setText(round + "%");
 
         N1_jPanel5.setLayout(new java.awt.GridLayout());
 
@@ -461,7 +464,8 @@ public class View extends javax.swing.JFrame {
 
         N2_jLabel4.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         N2_jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        N2_jLabel4.setText("78%");
+        round = (int) (100 * cont.oxygenation.get(1));
+        N2_jLabel4.setText(round + "%");
 
         N2_jPanel5.setLayout(new java.awt.GridLayout());
 
@@ -588,7 +592,8 @@ public class View extends javax.swing.JFrame {
 
         N3_jLabel4.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         N3_jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        N3_jLabel4.setText("78%");
+        round = (int) (100 * cont.oxygenation.get(2));
+        N3_jLabel4.setText(round + "%");
 
         N3_jPanel5.setLayout(new java.awt.GridLayout());
 
@@ -715,7 +720,8 @@ public class View extends javax.swing.JFrame {
 
         N4_jLabel4.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         N4_jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        N4_jLabel4.setText("78%");
+        round = (int) (100 * cont.oxygenation.get(3));
+        N4_jLabel4.setText(round + "%");
 
         N4_jPanel5.setLayout(new java.awt.GridLayout());
 
@@ -842,7 +848,8 @@ public class View extends javax.swing.JFrame {
 
         N5_jLabel4.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         N5_jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        N5_jLabel4.setText("78%");
+        round = (int) (100 * cont.oxygenation.get(4));
+        N5_jLabel4.setText(round + "%");
 
         N5_jPanel5.setLayout(new java.awt.GridLayout());
 
@@ -969,7 +976,8 @@ public class View extends javax.swing.JFrame {
 
         N6_jLabel4.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         N6_jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        N6_jLabel4.setText("78%");
+        round = (int) (100 * cont.oxygenation.get(5));
+        N6_jLabel4.setText(round + "%");
 
         N6_jPanel5.setLayout(new java.awt.GridLayout());
 
@@ -1096,7 +1104,8 @@ public class View extends javax.swing.JFrame {
 
         N7_jLabel4.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         N7_jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        N7_jLabel4.setText("78%");
+        round = (int) (100 * cont.oxygenation.get(6));
+        N7_jLabel4.setText(round + "%");
 
         N7_jPanel5.setLayout(new java.awt.GridLayout());
 
@@ -1223,7 +1232,8 @@ public class View extends javax.swing.JFrame {
 
         N8_jLabel4.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         N8_jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        N8_jLabel4.setText("78%");
+        round = (int) (100 * cont.oxygenation.get(7));
+        N8_jLabel4.setText(round + "%");
 
         N8_jPanel5.setLayout(new java.awt.GridLayout());
 
@@ -1363,19 +1373,6 @@ public class View extends javax.swing.JFrame {
         });
 
         edit.add(NIRSTester);
-        
-        AdjustAlertSounds.setText("Alert Sounds");
-        AdjustAlertSounds.addActionListener(new java.awt.event.ActionListener() {
-        	public void actionPerformed(java.awt.event.ActionEvent evt) {
-        		try {
-        			cont.changeAlertSounds();
-        		} catch (ParseException e) {
-        			e.printStackTrace();
-        		}
-        	}
-        });
-        edit.add(AdjustAlertSounds);
-        
 
         navi.setText("Navigate");
 
@@ -1454,11 +1451,11 @@ public class View extends javax.swing.JFrame {
 
       if(cont.region == 0) {
          N1_jLabel4.setText(round + "%");
-         if(cont.color == 1) {
+         if(cont.colors.get(0) == 1) {
             N1_jLabel2.setForeground(Color.YELLOW);
             N1_jLabel2.setText("Abnormal");
          }
-         else if(cont.color == 2) {
+         else if(cont.colors.get(0) == 2) {
             N1_jLabel2.setForeground(Color.RED);
             N1_jLabel2.setText("Critical");
          }
@@ -1469,11 +1466,11 @@ public class View extends javax.swing.JFrame {
       }
       else if(cont.region == 1) {
          N2_jLabel4.setText(round + "%");
-         if(cont.color == 1) {
+         if(cont.colors.get(1) == 1) {
             N2_jLabel2.setForeground(Color.YELLOW);
             N2_jLabel2.setText("Abnormal");
          }
-         else if(cont.color == 2) {
+         else if(cont.colors.get(1) == 2) {
             N2_jLabel2.setForeground(Color.RED);
             N2_jLabel2.setText("Critical");
          }
@@ -1484,11 +1481,11 @@ public class View extends javax.swing.JFrame {
       }
       else if(cont.region == 2) {
          N3_jLabel4.setText(round + "%");
-         if(cont.color == 1) {
+         if(cont.colors.get(2) == 1) {
             N3_jLabel2.setForeground(Color.YELLOW);
             N3_jLabel2.setText("Abnormal");
          }
-         else if(cont.color == 2) {
+         else if(cont.colors.get(2) == 2) {
             N3_jLabel2.setForeground(Color.RED);
             N3_jLabel2.setText("Critical");
          }
@@ -1499,11 +1496,11 @@ public class View extends javax.swing.JFrame {
       }
       else if(cont.region == 3) {
          N4_jLabel4.setText(round + "%");
-         if(cont.color == 1) {
+         if(cont.colors.get(3) == 1) {
             N4_jLabel2.setForeground(Color.YELLOW);
             N4_jLabel2.setText("Abnormal");
          }
-         else if(cont.color == 2) {
+         else if(cont.colors.get(3) == 2) {
             N4_jLabel2.setForeground(Color.RED);
             N4_jLabel2.setText("Critical");
          }
@@ -1514,11 +1511,11 @@ public class View extends javax.swing.JFrame {
       }
       else if(cont.region == 4) {
          N5_jLabel4.setText(round + "%");
-         if(cont.color == 1) {
+         if(cont.colors.get(4) == 1) {
             N5_jLabel2.setForeground(Color.YELLOW);
             N5_jLabel2.setText("Abnormal");
          }
-         else if(cont.color == 2) {
+         else if(cont.colors.get(4) == 2) {
             N5_jLabel2.setForeground(Color.RED);
             N5_jLabel2.setText("Critical");
          }
@@ -1529,11 +1526,11 @@ public class View extends javax.swing.JFrame {
       }
       else if(cont.region == 5) {
          N6_jLabel4.setText(round + "%");
-         if(cont.color == 1) {
+         if(cont.colors.get(5) == 1) {
             N6_jLabel2.setForeground(Color.YELLOW);
             N6_jLabel2.setText("Abnormal");
          }
-         else if(cont.color == 2) {
+         else if(cont.colors.get(5) == 2) {
             N6_jLabel2.setForeground(Color.RED);
             N6_jLabel2.setText("Critical");
          }
@@ -1544,11 +1541,11 @@ public class View extends javax.swing.JFrame {
       }
       else if(cont.region == 6) {
          N7_jLabel4.setText(round + "%");
-         if(cont.color == 1) {
+         if(cont.colors.get(6) == 1) {
             N7_jLabel2.setForeground(Color.YELLOW);
             N7_jLabel2.setText("Abnormal");
          }
-         else if(cont.color == 2) {
+         else if(cont.colors.get(6) == 2) {
             N7_jLabel2.setForeground(Color.RED);
             N7_jLabel2.setText("Critical");
          }
@@ -1559,11 +1556,11 @@ public class View extends javax.swing.JFrame {
       }
       else if(cont.region == 7) {
          N8_jLabel4.setText(round + "%");
-         if(cont.color == 1) {
+         if(cont.colors.get(7) == 1) {
             N8_jLabel2.setForeground(Color.YELLOW);
             N8_jLabel2.setText("Abnormal");
          }
-         else if(cont.color == 2) {
+         else if(cont.colors.get(7) == 2) {
             N8_jLabel2.setForeground(Color.RED);
             N8_jLabel2.setText("Critical");
          }
@@ -1689,7 +1686,6 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JMenuItem back;
     private javax.swing.JMenu edit;
     private javax.swing.JMenuItem NIRSTester;
-    private javax.swing.JMenuItem AdjustAlertSounds;
     private javax.swing.JMenuItem exit;
     private javax.swing.JMenu file;
     private javax.swing.JMenuItem forward;
