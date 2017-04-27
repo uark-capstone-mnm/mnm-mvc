@@ -81,6 +81,7 @@ public class View extends javax.swing.JFrame {
         exit = new javax.swing.JMenuItem();
         edit = new javax.swing.JMenu();
         NIRSTester = new javax.swing.JMenuItem();
+        AdjustAlertSounds = new javax.swing.JMenuItem();
         navi = new javax.swing.JMenu();
         back = new javax.swing.JMenuItem();
         forward = new javax.swing.JMenuItem();
@@ -1362,6 +1363,19 @@ public class View extends javax.swing.JFrame {
         });
 
         edit.add(NIRSTester);
+        
+        AdjustAlertSounds.setText("Alert Sounds");
+        AdjustAlertSounds.addActionListener(new java.awt.event.ActionListener() {
+        	public void actionPerformed(java.awt.event.ActionEvent evt) {
+        		try {
+        			cont.changeAlertSounds();
+        		} catch (ParseException e) {
+        			e.printStackTrace();
+        		}
+        	}
+        });
+        edit.add(AdjustAlertSounds);
+        
 
         navi.setText("Navigate");
 
@@ -1675,6 +1689,7 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JMenuItem back;
     private javax.swing.JMenu edit;
     private javax.swing.JMenuItem NIRSTester;
+    private javax.swing.JMenuItem AdjustAlertSounds;
     private javax.swing.JMenuItem exit;
     private javax.swing.JMenu file;
     private javax.swing.JMenuItem forward;

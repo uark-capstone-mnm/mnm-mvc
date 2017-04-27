@@ -73,4 +73,68 @@ public class Configuration {
             }
             return 0.00;
 	}
+	
+	public static int getWarningSoundPitch() {
+		return prefs.node("sounds").getInt("warningpitch", 0);
+	}
+	
+	public static int getWarningSoundFrequencey(){
+		return prefs.node("sounds").getInt("warningfrequency", 0);
+	}
+	
+	public static int getWarningRepeat(){
+		return prefs.node("sounds").getInt("warningrepeat", 0);
+	}
+	
+	public static int getWarningPause(){
+		return prefs.node("sounds").getInt("warningpause", 0);
+	}
+	
+	public static int getCriticalSoundPitch() {
+		return prefs.node("sounds").getInt("criticalpitch", 0);
+	}
+	
+	public static int getCriticalSoundFrequency(){
+		return prefs.node("sounds").getInt("criticalfrequency", 0);
+	}
+	
+	public static int getCriticalSoundRepeat(){
+		return prefs.node("sounds").getInt("criticalrepeat", 0);
+	}
+	
+	public static int getCriticalPause(){
+		return prefs.node("sounds").getInt("criticalpause", 0);
+	}
+	
+	public static void setWarningSoundPitch(int pitch) {
+		prefs.node("sounds").putInt("warningpitch", pitch);
+	}
+	
+	public static void setWarningSoundFrequency(int freq){
+		prefs.node("sounds").putInt("warningfrequency", freq);
+	}
+	
+	public static void setWarningSoundRepeat(int repeat){
+		prefs.node("sounds").putInt("warningrepeat", repeat);
+	}
+	
+	public static void setWaringPause(int pause){
+		prefs.node("sounds").putInt("warningpause", pause);
+	}
+	
+	public static void setCriticalSoundPitch(int pitch) {
+		prefs.node("sounds").putInt("criticalpitch", pitch);
+	}
+	
+	public static void setCriticalSoundFrequency(int freq){
+		prefs.node("sounds").putInt("criticalfrequency", freq);
+	}
+	
+	public static void setCriticalSoundRepeat(int repeat){
+		prefs.node("sounds").putInt("criticalrepeat", repeat);
+	}
+	
+	public static void setCriticalPause(int pause){
+		prefs.node("sounds").putInt("criticalpause", pause);
+	}
 }

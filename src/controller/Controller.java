@@ -60,6 +60,7 @@ public class Controller {
         Configuration customProps = new Configuration("config.ini");
         System.out.println("Yellow Threshold: " + customProps.getThreshold("yellow"));
         System.out.println("Red Threshold: " + customProps.getThreshold("red"));
+        System.out.println("Sound: " + customProps.getCriticalSoundPitch());
         view.setVisible(true);
     }
 
@@ -209,6 +210,19 @@ public class Controller {
         catch (IOException ex) {
             System.out.println("Cannot load image...");
         }
+    }
+    
+    public void changeAlertSounds() throws ParseException{
+    	JFormattedTextField r, c;
+    	r = new JFormattedTextField();
+    	final JComponent[] inputs = new JComponent[] { 
+    			new JLabel("Change Pitch"), r
+    			};
+    	
+    	// Pop-up input panel
+    	JOptionPane.showConfirmDialog(null, inputs, "Changing Pitch", JOptionPane.PLAIN_MESSAGE);
+    	int repeat = Integer.parseInt(r.getText());
+    	Configuration.setCriticalSoundRepeat(repeat);
     }
     
 }
