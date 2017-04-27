@@ -65,7 +65,7 @@ public class Controller {
             }
             else {
                 colors.add(0);
-        }
+            }
         }    
         
         View view = new View();

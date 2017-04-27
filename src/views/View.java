@@ -272,7 +272,8 @@ public class View extends javax.swing.JFrame {
 //        );
 
         try {
-            GraphModel model = new models.NIRS.NIRSGraphModelA();
+            //GraphModel model = new models.NIRS.NIRSGraphModelA();
+            GraphModel model = new models.NIRS.DefaultGraphModel();
             leftEEG.add(new SeriesChartPane(model));
             leftEEG.add(new SeriesChartPane(model));
             leftEEG.add(new SeriesChartPane(model));
