@@ -59,13 +59,13 @@ public class Controller {
             oxygenation.add(rand.nextDouble());
             
             if(oxygenation.get(i) < 0.7) {
-                colors.set(i, 2);
+                colors.add(2);
             }
             else if(oxygenation.get(i) >= 0.7 && oxygenation.get(i) <= 0.9) {
-                colors.set(i, 1);
+                colors.add(1);
             }
             else {
-                colors.set(i, 0);
+                colors.add(0);
         }
         }    
         
@@ -140,7 +140,7 @@ public class Controller {
     	// Does the actual work of replacing the image
     	BufferedImage brainImage = bOverlay.setImage(region, color);
     	ajlRegions.get(region).setIcon(new ImageIcon(brainImage));
-        View.updateRegion();
+        View.updateRegion(region);
     	if (color == 1){
     		try {
     			new SoundWarning().start();
@@ -165,7 +165,7 @@ public class Controller {
     public void changeBrainRegion(int color, int region) throws ParseException{
     	BufferedImage brainImage = bOverlay.setImage(region, color);
     	ajlRegions.get(region).setIcon(new ImageIcon(brainImage));
-    	View.updateRegion();
+    	View.updateRegion(region);
     	if (color == 1){
             try {
                 new SoundWarning().start();

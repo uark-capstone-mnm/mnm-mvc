@@ -45,6 +45,15 @@ public class View extends javax.swing.JFrame {
      */
     public View() {
         initComponents();
+        for(int i = 0; i < 8; i++) {
+            updateRegion(i);
+            try {
+                cont.changeBrainRegion(cont.colors.get(i),i);
+            }
+            catch (Exception e) {
+               e.printStackTrace();
+            }
+        }
         //cont.startRecording();
         start.setEnabled(false);
     }
@@ -1446,10 +1455,10 @@ public class View extends javax.swing.JFrame {
       leftMainLabel2.setText(cont.globalOxygenation + "%");
    }
 
-    public static void updateRegion() {
-        int round = (int) (100 * cont.oxygenation.get(cont.region));
+    public static void updateRegion(int regionToUpdate) {
+        int round = (int) (100 * cont.oxygenation.get(regionToUpdate));
 
-      if(cont.region == 0) {
+      if(regionToUpdate == 0) {
          N1_jLabel4.setText(round + "%");
          if(cont.colors.get(0) == 1) {
             N1_jLabel2.setForeground(Color.YELLOW);
@@ -1464,7 +1473,7 @@ public class View extends javax.swing.JFrame {
             N1_jLabel2.setText("Good");
          }
       }
-      else if(cont.region == 1) {
+      else if(regionToUpdate == 1) {
          N2_jLabel4.setText(round + "%");
          if(cont.colors.get(1) == 1) {
             N2_jLabel2.setForeground(Color.YELLOW);
@@ -1479,7 +1488,7 @@ public class View extends javax.swing.JFrame {
             N2_jLabel2.setText("Good");
          }
       }
-      else if(cont.region == 2) {
+      else if(regionToUpdate == 2) {
          N3_jLabel4.setText(round + "%");
          if(cont.colors.get(2) == 1) {
             N3_jLabel2.setForeground(Color.YELLOW);
@@ -1494,7 +1503,7 @@ public class View extends javax.swing.JFrame {
             N3_jLabel2.setText("Good");
          }
       }
-      else if(cont.region == 3) {
+      else if(regionToUpdate == 3) {
          N4_jLabel4.setText(round + "%");
          if(cont.colors.get(3) == 1) {
             N4_jLabel2.setForeground(Color.YELLOW);
@@ -1509,7 +1518,7 @@ public class View extends javax.swing.JFrame {
             N4_jLabel2.setText("Good");
          }
       }
-      else if(cont.region == 4) {
+      else if(regionToUpdate == 4) {
          N5_jLabel4.setText(round + "%");
          if(cont.colors.get(4) == 1) {
             N5_jLabel2.setForeground(Color.YELLOW);
@@ -1524,7 +1533,7 @@ public class View extends javax.swing.JFrame {
             N5_jLabel2.setText("Good");
          }
       }
-      else if(cont.region == 5) {
+      else if(regionToUpdate == 5) {
          N6_jLabel4.setText(round + "%");
          if(cont.colors.get(5) == 1) {
             N6_jLabel2.setForeground(Color.YELLOW);
@@ -1539,7 +1548,7 @@ public class View extends javax.swing.JFrame {
             N6_jLabel2.setText("Good");
          }
       }
-      else if(cont.region == 6) {
+      else if(regionToUpdate == 6) {
          N7_jLabel4.setText(round + "%");
          if(cont.colors.get(6) == 1) {
             N7_jLabel2.setForeground(Color.YELLOW);
@@ -1554,7 +1563,7 @@ public class View extends javax.swing.JFrame {
             N7_jLabel2.setText("Good");
          }
       }
-      else if(cont.region == 7) {
+      else if(regionToUpdate == 7) {
          N8_jLabel4.setText(round + "%");
          if(cont.colors.get(7) == 1) {
             N8_jLabel2.setForeground(Color.YELLOW);
