@@ -93,7 +93,7 @@ public class Controller {
         }
     }
     
-    public static int getGlobalOxygenation() {
+    public int getGlobalOxygenation() {
         Double sum = 0.0;
         for(int i = 0; i < oxygenation.size(); i++) {
             sum += oxygenation.get(i);
