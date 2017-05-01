@@ -1453,7 +1453,7 @@ public class View extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public static void updateOxygenation() {
-      leftMainLabel2.setText(cont.globalOxygenation + "%");
+      leftMainLabel2.setText(cont.getGlobalOxygenation() + "%");
    }
 
     public static void updateRegion(int regionToUpdate) {
