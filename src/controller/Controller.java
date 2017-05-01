@@ -123,10 +123,11 @@ public class Controller {
     	JOptionPane.showConfirmDialog(null, inputs, "Test Case", JOptionPane.PLAIN_MESSAGE);
     	region = Integer.parseInt(r.getText());
         
-        oxygenation.set(region, (double) ((rand.nextInt(50) + 50) / 100));
+        oxygenation.set(region, (double) ((rand.nextInt(50) + 50) / 100.0));
         System.out.println(region + ", " + oxygenation.get(region));
         if(oxygenation.get(region) < Configuration.getThreshold("red")) {
-            colors.set(region, 2);
+
+        	
         }
         else if(oxygenation.get(region) >= Configuration.getThreshold("red") && oxygenation.get(region) <= Configuration.getThreshold("yellow")) {
             colors.set(region, 1);
