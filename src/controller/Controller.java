@@ -32,19 +32,31 @@ import views.View;
 import tools.SoundCritical;
 import tools.SoundWarning;
 
-/**
- *
- * @author thy
- */
 public class Controller {
     PatientFile model = new PatientFile();
     BrainOverlay bOverlay = new BrainOverlay();
     Random rand = new Random();
     
+    /**
+     * Region to change colors.
+     */
     public int region;
+    /**
+     * Color that the region will change to
+     */
     public int color;
+    /**
+     * List of colors
+     * Color - 1 = Yellow, 2 = Red, Else = Green
+     */
     public static ArrayList<Integer> colors;
+    /**
+     * All oxygenation levels from 8 regions of brain
+     */
     public static ArrayList<Double> oxygenation;
+    /**
+     * The average of all oxygenation levels in oxygenation (ArrayList)
+     */
     public static int globalOxygenation;
     
     // Moved these outside of creation so I could access them to change the images
@@ -52,6 +64,14 @@ public class Controller {
     ArrayList<ImageIcon> aiRegions = new ArrayList<ImageIcon>();
     ArrayList<JLabel> ajlRegions = new ArrayList<JLabel>();
 
+    /**
+     * Constructs a Controller object.
+     */
+    public Controller(){}
+    
+    /**
+     * Randomize the regions (red, yellow, green) before start
+     */
     public void startApplication() {
         oxygenation = new ArrayList();
         colors = new ArrayList();
@@ -77,6 +97,10 @@ public class Controller {
         view.setVisible(true);
     }
 
+    /**
+     * On startup, begin recording the information that flows and create patient file
+     * @return
+     */
     public boolean startRecording() {
         try{
             return model.createPatientFile();
@@ -84,7 +108,11 @@ public class Controller {
             return false;
         }
     }
-
+    
+    /**
+     * Stop recording information when action (mouse click) has occurred
+     * @return
+     */
     public boolean stopRecording() {
         try{
             return model.closePatientFile();
@@ -93,6 +121,10 @@ public class Controller {
         }
     }
     
+    /**
+     * Obtains globalOxygenation level (global variable)
+     * @return
+     */
     public int getGlobalOxygenation() {
         Double sum = 0.0;
         for(int i = 0; i < oxygenation.size(); i++) {
@@ -102,7 +134,8 @@ public class Controller {
         return globalOxygenation;
     }
     
-    /* Calls setImage function from BrainOverlay and sets the region and color
+    /**
+     * Calls setImage function from BrainOverlay and sets the region and color
      * based on user inputs. This will obviously change once we have a listener
      * based on user inputs.  This will obviously change once we have a listener
      * on the NIRS data, but this is for demo'ing the ability to change the image
@@ -160,8 +193,13 @@ public class Controller {
         View.updateOxygenation();
     }
     
-    // Color - 1 = Yellow, 2 = Red, Else = Green
-    // Region - Starts counting from 0
+    /**
+     *  Color - 1 = Yellow, 2 = Red, Else = Green
+     *  Region - Starts counting from 0
+     * @param color
+     * @param region
+     * @throws ParseException
+     */
     public void changeBrainRegion(int color, int region) throws ParseException{
     	BufferedImage brainImage = bOverlay.setImage(region, color);
     	ajlRegions.get(region).setIcon(new ImageIcon(brainImage));
@@ -189,6 +227,11 @@ public class Controller {
         
     }
 
+    /**
+     * Insert the green brain region images for brain panel.
+     * @param parent
+     * @param tabbed
+     */
     public void implementRegionImages(JPanel parent, JTabbedPane tabbed) {
         try{ 
             
@@ -233,6 +276,10 @@ public class Controller {
         }
     }
     
+    /**
+     * Change alert sounds in configuration file
+     * @throws ParseException
+     */
     public void changeAlertSounds() throws ParseException{
     	JFormattedTextField r, c;
     	r = new JFormattedTextField();

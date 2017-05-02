@@ -5,10 +5,7 @@
  */
 package models.PatientFile;
 
-/**
- *
- * @author thy
- */
+
 import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -21,6 +18,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
+/**
+ * Model to handle patient file
+ *
+ */
 public class PatientFile {
     private String fileName;
     private int iSSN;
@@ -28,6 +29,11 @@ public class PatientFile {
     JTextField fName, lName;
     JFormattedTextField ssn;
     
+    /**
+     * Display information dialog and create patient file basd on information given
+     * @return
+     * @throws ParseException
+     */
     public boolean createPatientFile() throws ParseException {
         
         fName = new JTextField();
@@ -84,6 +90,10 @@ public class PatientFile {
         return true;
     }
     
+    /**
+     * In the file, add the file header.
+     * @return
+     */
     public boolean createFile() {
         String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
         String fileTime = new SimpleDateFormat("MMM dd yyyy 'at' HH:mm:ss").format(new Date());
@@ -119,6 +129,10 @@ public class PatientFile {
         return true;
     }
    
+    /**
+     * Close the patient file
+     * @return
+     */
     public boolean closePatientFile() {
         String fileTime = new SimpleDateFormat("MMM dd yyyy 'at' HH:mm:ss").format(new Date());
         try{
@@ -134,12 +148,22 @@ public class PatientFile {
             return false;
         }
     }
-
+    
+    /**
+     * Sanitize inputs from information dialog
+     * @param sSSN
+     * @return
+     */
     public int transformSSN(String sSSN) {
         String temp = sSSN.replaceAll("-", "");
         return Integer.parseInt(temp);
     }
 
+    /**
+     * Check to make sure name is valid
+     * @param text
+     * @return
+     */
     private boolean validateNameInput(String text) {
         if (text.isEmpty())
             return false;
@@ -149,6 +173,11 @@ public class PatientFile {
         return true;
     }
 
+    /**
+     * Check to make sure ssn is valid
+     * @param text
+     * @return
+     */
     private boolean validateSSNInput(String text) {
         if (text.isEmpty())
             return false;

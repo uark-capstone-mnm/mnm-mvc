@@ -6,8 +6,8 @@
 package tools;
 
 /**
+ * Global variables to be used through the project
  *
- * @author thy
  */
 public class Global {
     /*	

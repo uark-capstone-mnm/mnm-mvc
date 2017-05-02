@@ -7,14 +7,13 @@ package main;
 
 import controller.Controller;
 
-
 /**
+ * Initiate the GUI program
  *
- * @author thy
  */
 public class Main {
 
-    /**
+    /** Main method
      * @param args the command line arguments
      */
     public static void main(String[] args) {

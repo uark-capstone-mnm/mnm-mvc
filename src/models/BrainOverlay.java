@@ -13,9 +13,15 @@ import org.apache.commons.io.filefilter.PrefixFileFilter;
 
 public class BrainOverlay {
 
-	// Reads in a region and color and returns the correct colored image for said region
-	// **NOTE** Probably needs to be rewritten to always have the images loaded into memory so
-	// switching between themd doesn't have to read them into a File[] everytime
+	/** Reads in a region and color and returns the correct colored image for said region<br>
+	 * <br>
+	 * Probably needs to be rewritten to always have the images loaded into memory so
+	 * switching between themd doesn't have to read them into a File[] every time
+	 * 
+	 * @param region index of the region
+	 * @param color integer color to change region
+	 * @return
+	 */
 	public BufferedImage setImage(int region, int color){
 		ArrayList<BufferedImage> brainImages = new ArrayList<BufferedImage>(8);
 		int i = 0;

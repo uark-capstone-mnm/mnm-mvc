@@ -33,10 +33,9 @@ import models.NIRS.DefaultGraphModel;
 import models.SeriesChartPane;
 import tools.ImageMap;
 
-
 /**
+ * View from Model-View-Controller architecture.
  *
- * @author thy
  */
 public class View extends javax.swing.JFrame {
     static Controller cont = new Controller();
@@ -1452,10 +1451,16 @@ public class View extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Updates the global oxygenation percentage.
+     */
     public static void updateOxygenation() {
       leftMainLabel2.setText(cont.getGlobalOxygenation() + "%");
    }
 
+    /**
+     * Updates the corresponding tab given the region on the main panel.
+     */
     public static void updateRegion(int regionToUpdate) {
         int round = (int) (100 * cont.oxygenation.get(regionToUpdate));
 
@@ -1584,6 +1589,9 @@ public class View extends javax.swing.JFrame {
       }
    }
 
+    /**
+     * Opens a JFileChooser dialog to save the current readings.
+     */
     private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
         // TODO add your handling code here:
         JFileChooser fcSave = new JFileChooser();
@@ -1593,6 +1601,9 @@ public class View extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_saveActionPerformed
 
+    /**
+     * If the program is exited, stop recording and then exit.
+     */
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
         // TODO add your handling code here:
         if(stop.isEnabled())
@@ -1600,6 +1611,9 @@ public class View extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_exitActionPerformed
 
+    /**
+     * Handles Alt+LEFT to navigate to the left across tabs
+     */
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         // TODO add your handling code here:
         int index = jTabbedPane1.getSelectedIndex() - 1;
@@ -1609,6 +1623,9 @@ public class View extends javax.swing.JFrame {
             jTabbedPane1.setSelectedIndex(index);
     }//GEN-LAST:event_backActionPerformed
 
+    /**
+     * Handles Alt+RIGHT to navigate to the right across tabs
+     */
     private void forwardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forwardActionPerformed
         // TODO add your handling code here:
         int index = jTabbedPane1.getSelectedIndex() + 1;
@@ -1618,17 +1635,26 @@ public class View extends javax.swing.JFrame {
             jTabbedPane1.setSelectedIndex(index);
     }//GEN-LAST:event_forwardActionPerformed
 
+    /**
+     * If Navigate >> Home is selected, go back to the first/main tab.
+     */
     private void homeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeActionPerformed
         // TODO add your handling code here:
         jTabbedPane1.setSelectedIndex(0);
     }//GEN-LAST:event_homeActionPerformed
 
+    /**
+     * If stop recording is disabled, enable start recording.
+     */
     private void startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startActionPerformed
         // TODO add your handling code here:
         stop.setEnabled(true);
         start.setEnabled(false);
     }//GEN-LAST:event_startActionPerformed
 
+    /**
+     * If start recording is disabled, enable stop recording.
+     */
     private void stopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stopActionPerformed
         // TODO add your handling code here:
         if(cont.stopRecording()) {
@@ -1637,6 +1663,9 @@ public class View extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_stopActionPerformed
 
+    /**
+     * If application is closing, make sure to close patient file and stop recording.
+     */
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
         if(stop.isEnabled()) {
@@ -1645,6 +1674,9 @@ public class View extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formWindowClosing
 
+    /**
+     * Opens a JFileChooser dialog to select a file to be opened.
+     */
     private void openActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openActionPerformed
         // TODO add your handling code here:
         JFileChooser fcOpen = new JFileChooser();
@@ -1653,42 +1685,6 @@ public class View extends javax.swing.JFrame {
             // Open file with the name
         }
     }//GEN-LAST:event_openActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new View().setVisible(true);
-            }
-        });
-    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

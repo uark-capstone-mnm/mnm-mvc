@@ -5,19 +5,24 @@
  */
 package tools;
 
-/**
- *
- * @author thy
- */
-
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-
+/**
+ * Tool to divide main panel brain image into 8 even subimages.
+ *
+ */
 public class ImageMap {
 
+	/**
+	 * Constructs an ImageMap object
+	 * @param dimg Full image
+	 * @param abiRegions ArrayList of subimages of type BufferedImage
+	 * @param aiRegions ArrayList of subimages of type ImageIcon
+	 * @param ajlRegions ArrayList of subimages of type JLabel
+	 */
 	public ImageMap(BufferedImage dimg, ArrayList<BufferedImage> abiRegions, ArrayList<ImageIcon> aiRegions, ArrayList<JLabel> ajlRegions) {
 		int w = dimg.getWidth()/2;
 		int h = dimg.getHeight()/4;

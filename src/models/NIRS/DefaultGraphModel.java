@@ -12,8 +12,8 @@ import java.util.List;
 import java.util.Random;
 
 /**
+ * A real time graph using random double data
  *
- * @author thy
  */
 public class DefaultGraphModel implements GraphModel{
     private double phase = 0;

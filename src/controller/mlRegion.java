@@ -9,16 +9,19 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JTabbedPane;
 import tools.Global;
-
 /**
- *
- * @author thy
+ * MouseListener for all regions on Main panel.
  */
 public class mlRegion implements MouseListener {
 
     JTabbedPane tabbed;
     int region;
-
+    
+    /**
+     * Constructs an mlRegion object.
+     * @param tabbed JTabbedPane
+     * @param region index of corresponding region
+     */
     public mlRegion(JTabbedPane tabbed, int region){
             this.tabbed = tabbed;
             this.region = region;
@@ -29,7 +32,9 @@ public class mlRegion implements MouseListener {
     public void mouseClicked(MouseEvent e) {
         
     }
-
+    /**
+     * When a region has been selected, go to corresponding tab region.
+     */
     @Override
     public void mousePressed(MouseEvent e) {
         this.tabbed.setSelectedIndex(Global.getIndex(region));

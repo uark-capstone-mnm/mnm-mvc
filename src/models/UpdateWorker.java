@@ -11,18 +11,24 @@ import javax.swing.SwingWorker;
 import org.knowm.xchart.XYChart;
 
 /**
+ * A model to implement real time graphs
  *
- * @author thy
  */
 public class UpdateWorker extends SwingWorker<Void, List<Double>[]> {
 
     private GraphMonitor monitor;
     private XYChart chart;
 
+    /**
+     * Constructs an UpdateWorker object.
+     */
     public UpdateWorker(GraphMonitor monitor) {
         this.monitor = monitor;
     }
 
+    /**
+     * Real time graphs while in background
+     */
     @Override
     protected Void doInBackground() throws Exception {
         while (true) {
@@ -31,6 +37,9 @@ public class UpdateWorker extends SwingWorker<Void, List<Double>[]> {
         }
     }
 
+    /** 
+     * Update data within graphs
+     */
     @Override
     protected void process(List<List<Double>[]> chunks) {
         for (List<Double>[] data : chunks) {

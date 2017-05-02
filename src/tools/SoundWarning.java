@@ -5,6 +5,10 @@ import models.Configuration;
 
 public class SoundWarning extends Thread {
 
+	/**
+	 * Constructs a SoundWarning object.
+	 */
+	public SoundWarning(){}
 	public void run() {
 		SoundWarning.alert();
 	}

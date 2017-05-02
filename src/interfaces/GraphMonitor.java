@@ -8,8 +8,8 @@ package interfaces;
 import java.util.List;
 
 /**
+ * Class Interface for real time graphs
  *
- * @author thy
  */
 public interface GraphMonitor {
     public GraphModel getModel();

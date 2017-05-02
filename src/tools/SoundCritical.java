@@ -5,6 +5,11 @@ import models.Configuration;
 
 public class SoundCritical extends Thread {
 
+	/**
+	 * Constructs a SoundCritical object.
+	 */
+	public SoundCritical(){}
+	
 	public void run() {
 		SoundCritical.alert();
 	}

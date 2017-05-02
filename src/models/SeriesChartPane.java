@@ -17,14 +17,19 @@ import org.knowm.xchart.XChartPanel;
 import org.knowm.xchart.style.Styler;
 
 /**
+ * Panel of real time graphs.
  *
- * @author thy
  */
 public class SeriesChartPane extends JPanel implements GraphMonitor {
 
     private GraphModel model;
     private XYChart chart;
 
+    /**
+     * Constructs a SeriesChartPane object.
+     * @param model
+     * @throws FileNotFoundException 
+     */
     public SeriesChartPane(GraphModel model) throws FileNotFoundException {
         this.model = model;
         chart = initChart();
@@ -40,17 +45,29 @@ public class SeriesChartPane extends JPanel implements GraphMonitor {
         worker.execute();
     }
 
+    /**
+     * Returns the SeriesChartPane.model
+     */
     @Override
     public GraphModel getModel() {
         return model;
     }
 
+    /**
+     * Updates the data and refreshes it to display new data
+     */
     @Override
     public void updateData(List<Double>[] data) {
         chart.updateXYSeries("eeg", data[0], data[1], null);
         repaint();
     }
 
+    /**
+     * Basic characteristics for a real-time graph<br>
+     * Set dimensions=300x200<br>
+     * No padding, no legends, no axis titles, no markers
+     * @return
+     */
     private XYChart initChart() {
         XYChart chart = new XYChartBuilder().width(300).height(200).build();
         chart.getStyler().setChartPadding(0);
