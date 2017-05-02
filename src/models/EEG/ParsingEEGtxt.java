@@ -10,18 +10,31 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import models.Receptor;
 
+/**
+ * Model to parse EEG data
+ *
+ */
 public class ParsingEEGtxt {
 
     private String file;
     private ArrayList<Receptor> receptorsEEG;
     private Scanner scan;
 
+    /**
+     * Constructs a ParsingEEGtxt object
+     * @param file name of EEG file to be parsed
+     * @throws FileNotFoundException
+     */
     public ParsingEEGtxt(String file) throws FileNotFoundException {
         this.setFile(file);
         this.receptorsEEG = new ArrayList<Receptor>();
         this.parsing();
     }
 
+    /**
+     * Reads in the file and parses the EEG data into receptorsEEG (ArrayList of Receptors)
+     * @throws FileNotFoundException
+     */
     private void parsing() throws FileNotFoundException {
         String scannedData;
         scan = new Scanner (new File(file));
@@ -48,6 +61,9 @@ public class ParsingEEGtxt {
         }
     }
 
+    /**
+     * DEBUGGING: Print data to PrintWriter object
+     */
     public void printDataExternally () {
         PrintWriter writer = null;
         //Timestamp timeStamp = new Timestamp (System.currentTimeMillis()); 
@@ -71,6 +87,9 @@ public class ParsingEEGtxt {
         }
     }
 
+    /**
+     * DEBUGGING: Print data to screen.
+     */
     public void printData () {
         for (int i = 0 ; i < receptorsEEG.size() ; i++)
         {
@@ -80,10 +99,18 @@ public class ParsingEEGtxt {
         }
     }
 
+    /**
+     * Return the EEG filename
+     * @return
+     */
     public String getFile() {
         return file;
     }
-
+    
+    /**
+     * Set the EEG filename
+     * @param file
+     */
     public void setFile(String file) {
         this.file = file;
     }

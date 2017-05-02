@@ -11,6 +11,8 @@ import static controller.Controller.oxygenation;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -31,6 +33,7 @@ import models.BrainOverlay;
 import models.Configuration;
 import models.NIRS.DefaultGraphModel;
 import models.SeriesChartPane;
+import models.EEG.SerialTest;
 import tools.ImageMap;
 
 /**
@@ -71,6 +74,8 @@ public class View extends javax.swing.JFrame {
         leftMain = new javax.swing.JPanel();
         leftMainLabel = new javax.swing.JLabel();
         leftMainLabel2 = new javax.swing.JLabel();
+        serialMonitor = new javax.swing.JLabel();
+        startSerialConnectionButton = new javax.swing.JButton("Start Serial Connection");
         rightMain = new javax.swing.JPanel();
         tabEEG = new javax.swing.JPanel();
         leftEEG = new javax.swing.JPanel();
@@ -1332,7 +1337,27 @@ public class View extends javax.swing.JFrame {
 
         // BEGIN EE TESTING TAB
 
-        tabRegion9.add(new JLabel("testing"));
+        tabRegion9.add(startSerialConnectionButton);
+        String serialMonitorString;
+        startSerialConnectionButton.addActionListener(new ActionListener () {
+            public void actionPerformed(ActionEvent e) { 
+                SerialTest main = new SerialTest();
+                main.initialize();
+                Thread t=new Thread() {
+                    public void run() {
+                        //the following line will keep this app alive for 1000 seconds,
+                        //waiting for events to occur and responding to them (printing incoming messages to console).
+                        try {Thread.sleep(1000000);} catch (InterruptedException ie) { System.out.println("End");}
+                    }
+                };
+                t.start();
+                serialMonitor.setText("Started");
+              } 
+        });
+
+        serialMonitor.setText("Status");
+        tabRegion9.add(serialMonitor);
+        
         jTabbedPane1.addTab("EE Test", tabRegion9);
 
         // END EE TESTING TAB
@@ -1686,7 +1711,15 @@ public class View extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_openActionPerformed
 
-
+    /**
+     * Return the text from MCU
+     * @param StringMonitor
+     */
+    public static void getSerialData(String StringMonitor)
+    {
+    	serialMonitor.setText(StringMonitor);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu actions;
     private javax.swing.JMenuItem back;
@@ -1702,6 +1735,8 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JPanel leftMain;
     private javax.swing.JLabel leftMainLabel;
     private static javax.swing.JLabel leftMainLabel2;
+    private static javax.swing.JLabel serialMonitor;
+    private javax.swing.JButton startSerialConnectionButton;
     private javax.swing.JMenu navi;
     private javax.swing.JMenuItem open;
     private javax.swing.JPanel rightEEG;
