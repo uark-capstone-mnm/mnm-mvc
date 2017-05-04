@@ -684,6 +684,7 @@ public class View extends javax.swing.JFrame {
             .addComponent(N3_jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
         );
 
+		
         tabRegion3.add(N3_jPanel4);
 
         jTabbedPane1.addTab("Region 3", tabRegion3);
