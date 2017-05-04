@@ -11,6 +11,10 @@ import javax.imageio.ImageIO;
 import org.apache.commons.io.IOCase;
 import org.apache.commons.io.filefilter.PrefixFileFilter;
 
+/**
+ * Populate brain region with different color images (red, yellow, green).
+ *
+ */
 public class BrainOverlay {
 
 	/** Reads in a region and color and returns the correct colored image for said region<br>

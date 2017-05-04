@@ -11,11 +11,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
- * @author thy
+ * Model - Graph for NIRS data (only one LED)
  */
 public class NIRSGraphModelA implements GraphModel{
     
+	/**
+	 * Read from NIRS file, the time intervals (0 index of attributes)
+	 * and data (5 index of attributes)
+	 */
     @Override
     public List<Double>[] getData() throws FileNotFoundException{
         String file = "./src/data/NIRS.txt";
